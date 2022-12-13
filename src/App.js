@@ -1,10 +1,9 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "../src/Components/Navbar.js"
-import Dogs from "../src/Pages/Dogs"
-import Cats from "../src/Pages/Cats"
-import Sheeps from "../src/Pages/Sheeps"
-import Goats from "../src/Pages/Goats"
+import Home from "../src/Pages/Home.js"
+import Contact from "../src/Pages/Contact.js"
+import About from "../src/Pages/About.js"
 import Class from "../src/Components/class.js"
 import Function from "../src/Components/Function.js"
 
@@ -14,10 +13,9 @@ function App() {
     <NavBar />
     <Routes>
     <Route>
-     <Route path="/" element={<Dogs num="2" />} />   
-     <Route path="/cats" element={<Cats />} />  
-     <Route path="/sheeps" element={<Sheeps  />} />  
-     <Route path="/goats" element={<Goats color="Black"/>} />  
+     <Route path="/" element={<Home num="2" />} />   
+     <Route path="/contact" element={<Contact />} />  
+     <Route path="/about" element={<About color="Black"/>} />  
      <Route path="/class" element={<Class/>} />  
      <Route path="/function" element={<Function/>} />  
 
