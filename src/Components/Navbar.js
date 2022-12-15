@@ -27,12 +27,6 @@ const Navbar= () =>{
     <li className="text-white">
       <NavLink to="/about">About Us</NavLink>
     </li>
-    <li className="text-white">
-      <NavLink to="/class">Class</NavLink>
-    </li>
-    <li className="text-white">
-      <NavLink to="/function">Function</NavLink>
-    </li>
     </ul>
     <ul className="hidden sm:flex gap-2 pr-2">
       <li><button className="bg-blue-100 py-1 px-3 rounded-[5px]" onClick={() => setSignIn(!signin)}>Sign In</button></li>
