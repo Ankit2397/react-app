@@ -1,4 +1,7 @@
-import { useState, createContext, useContext,useReducer } from "react";
+import { useState, createContext, useContext,useReducer ,useId ,Suspense ,  useDeferredValue} from "react";
+import { useSyncExternalStore, useDebugValue } from 'react';
+import { useEffect, useRef } from "react";
+import SearchResults from './SearchResults.js';
 import Call from "./usecall/index.js";
 import Memor from "./Memo.js";
 
@@ -43,6 +46,18 @@ const About = (props) =>{
       <div>
       <h2 className="text-center text-2xl">UseMemoHook</h2>
       <Memor/>
+      </div>
+      <div>
+      <h2 className="text-center text-2xl">UseRefHook</h2>
+      <Ref/>
+      </div>
+      <div>
+      <h2 className="text-center text-2xl">useSyncExternalStoreHook <br className="my-2"></br>useDebugValue Hook </h2>
+      <StatusBar/>
+      </div>
+      <div>
+      <h2 className="text-center text-2xl">UseIdHook</h2>
+        <Checkbox/>
       </div>
 
     </div>
@@ -162,3 +177,85 @@ function Todos() {
     </>
   );
 }
+
+
+// useRef
+
+function Ref() {
+  const [inputValue, setInputValue] = useState("");
+  const count = useRef(0);
+
+  useEffect(() => {
+    count.current = count.current + 1;
+  });
+
+  return (
+    <>
+    <div className="my-0 mx-6">
+      <input
+        className="border-2 border-blue-200 my-2"
+        type="text"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
+      <h1>Render Count: {count.current}</h1>
+      </div>
+    </>
+  );
+}
+
+// useSyncExternalStore is a hook recommended for reading and subscribing from external data sources in a way that’s compatible with concurrent rendering features like selective hydration and time slicing
+
+// useDebugValue => can be used to display a label for custom hooks in React DevTools.
+
+// useSyncExternalStore ||  useDebugValue 
+function StatusBar() {
+  const isOnline = useOnlineStatus();
+  return <h1>{isOnline ? 'Online' : 'Disconnected'}</h1>;
+}
+
+function useOnlineStatus() {
+  const isOnline = useSyncExternalStore(subscribe, () => navigator.onLine, () => true);
+  useDebugValue(isOnline ? 'Online' : 'Offline');
+  return isOnline;
+}
+
+function subscribe(callback) {
+  window.addEventListener('online', callback);
+  window.addEventListener('offline', callback);
+  return () => {
+    window.removeEventListener('online', callback);
+    window.removeEventListener('offline', callback);
+  };
+}
+
+
+
+//useId is a hook for generating unique IDs that are stable across the server and client, while avoiding hydration mismatches.
+//useId is not for generating keys in a list. Keys should be generated from your data.
+
+function Checkbox() {
+  const id = useId();
+  return (
+    <>
+      <label htmlFor={id}>Do you like it?</label>
+      <input id={id} type="checkbox" name="react"/>
+    </>
+  );
+};
+
+
+
+// useImperativeHandle => usually hook expose your functional based component method and properties to other component by putting functional component inside forwardRef example
+// useImperativeHandle should be used with forwardRef
+
+// useInsertionEffect should be limited to css-in-js library authors. Prefer useEffect or useLayoutEffect instead.
+
+
+// useTransition is a React Hook that lets you update the state without blocking the UI.
+
+// const [isPending, startTransition] = useTransition()
+
+// useDeferredValue is a React Hook that lets you defer updating a part of the UI.
+
+// const deferredValue = useDeferredValue(value)

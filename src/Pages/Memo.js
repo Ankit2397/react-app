@@ -10,7 +10,7 @@ const Memor = () => {
     setCount((c) => c + 1);
   };
   const addTodo = () => {
-    setTodos((t) => [...t, "New Todo"]);
+    setTodos((t) => [...t, "New Todo"]);  //spread Operator
   };
 
   return (
