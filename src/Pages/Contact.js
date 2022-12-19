@@ -1,4 +1,5 @@
 import React, { Component } from 'react';  
+import { cloneDeepWithoutLoc } from '@babel/types';
 class Contact extends React.Component {  
     constructor(props) {  
         super(props);  
@@ -20,81 +21,15 @@ class Contact extends React.Component {
       console.warn("render")
         return (  
             <div>
-            <div className="w-full py-0 px-[15px] max-w-[1300px] my-0 mx-auto">   
-
+            <div className="w-full py-0 px-[15px] max-w-[1300px] my-0 mx-auto">  
             <div className="mt-5 ml-2">  
                 <h2 className="text-2xl text-center my-2">Component LifeCycle</h2>  
                 <label htmlFor="name">Enter company name: </label>  
                 <input type="text" className="border-2 text-gray-400 border-gray-400 focus:outline-[#FE4A2A] rounded-[5px]" id="companyName" onChange={this.changeText.bind(this)}/>  
                 <h4 className="mt-2">You entered: <span className="text-[#FE4A2A]">{ this.state.companyName }</span></h4>  
             </div> 
- 
- <div>
-   <div className="my-2">
-     <h2 className="text-center text-2xl mb-2">Slice() string Method</h2>
-     {part} <span> ( Slice() with Positive Value )</span>
-     <br></br>
-     { npart}<span> ( Slice() with Negative Value ) </span>
-   </div>
 
-   <div className="my-2">
-     <h2 className="text-center text-2xl mb-2">substring() string Method</h2>
-     {subpart} <span> ( substring() with Positive Value )</span>
-     <br></br>
-      {nsubpart}<span> ( substring() with Positive Value )</span>
-   </div>
-
-   <div>
-   <h2 className="text-center text-2xl mb-2">Replace() string Method</h2>
-     {newText}
-   </div>
-   <div>
-   <h2 className="text-center text-2xl mb-2">replaceAll() string Method</h2>
-     {rpalltext}
-   </div>
-
-   <div>
-   <h2 className="text-center text-2xl mb-2">Uppercase() string Method</h2>
-   {updateupper}
-   </div>
-
-   <div>
-   <h2 className="text-center text-2xl mb-2">Lowercase() string Method</h2>
-   {updatelower}
-   </div>
-   <div>
-   <h2 className="text-center text-2xl mb-2">concat() string Method</h2>
-     {textnew}
-   </div>
- </div>
- 
- <div>
- <h2 className="text-center text-2xl mb-2">trim() string Method</h2>
-   {texttrim2}
- </div>
-<div>
- <h2 className="text-center text-2xl mb-2">padStart() string Method</h2>
-  {paddedstr}
-</div>
-<div>
- <h2 className="text-center text-2xl mb-2">padEnd() string Method</h2>
-  {paddedend}
-</div>
-
-
- <div>
- <h2 className="text-center text-2xl mb-2">charAt() string Method</h2>
-   {textcharAt}
- </div>
- <div>
- <h2 className="text-center text-2xl mb-2">charcodeAt() string Method</h2>
-   {textcharcodeAt}
- </div>
- <div>
- <h2 className="text-center text-2xl mb-2">split() string Method</h2>
-   {myArray}
- </div>
-
+<BlurExample/>
             </div>
 
             </div>
@@ -103,72 +38,326 @@ class Contact extends React.Component {
 }  
 export default Contact;
 
-// slice string
-
-let text = "Apple, Banana, Kiwi";
-let part = text.slice(7,13);
-
-let ntext = "index0, index1, index2";
-let npart = ntext.slice(-14, -8);
+// ******* Programmatically managing focus ******
 
 
-// substring()
+// function CustomTextInput(props) {
+//   return (
+//     <div>
+//       <input ref={props.inputRef} />
+//     </div>
+//   );
+// }
 
-// The difference is that start and end values less than 0 are treated as 0 in substring()
+// class Parent extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.inputElement = React.createRef();
+//   }
+//   render() {
+//     return (
+//       <CustomTextInput inputRef={this.inputElement} />
+//     );
+//   }
+// }
 
-let sub = "index01, index11, index22";
-let subpart = sub.substring(9, 16);
+// // Now you can set focus when required.
+// this.inputElement.current.focus();
 
-let nsubpart = sub.substr(-7);
 
-// replace()
+class BlurExample extends React.Component {
+  constructor(props) {
+    super(props);
 
-let rptext = "Please visit Html and Html!";
-let newText = rptext.replace("Html", "java");
+    this.state = { isOpen: false };
+    this.timeOutId = null;
 
-//Replace all
+    this.onClickHandler = this.onClickHandler.bind(this);
+    this.onBlurHandler = this.onBlurHandler.bind(this);
+    this.onFocusHandler = this.onFocusHandler.bind(this);
+  }
 
-let alltext = "Here is a cats. cats are very easy to love. cats are very popular."
-let rpalltext = alltext.replaceAll("cats","dogs");
+  onClickHandler() {
+    this.setState(currentState => ({
+      isOpen: !currentState.isOpen
+    }));
+  }
 
-// Uppercase
+  // We close the popover on the next tick by using setTimeout.
+  // This is necessary because we need to first check if
+  // another child of the element has received focus as
+  // the blur event fires prior to the new focus event.
+  onBlurHandler() {
+    this.timeOutId = setTimeout(() => {
+      this.setState({
+        isOpen: false
+      });
+    });
+  }
 
-let upper = "make text in capital letters!";
-let updateupper = upper.toUpperCase();
+  // If a child receives focus, do not close the popover.
+  onFocusHandler() {
+    clearTimeout(this.timeOutId);
+  }
 
-// Lowercase
+  render() {
+    // React assists us by bubbling the blur and
+    // focus events to the parent.
+    return (
+      <div onBlur={this.onBlurHandler}
+           onFocus={this.onFocusHandler}>
+        <button onClick={this.onClickHandler}
+                aria-haspopup="true"
+                aria-expanded={this.state.isOpen}
+              className="mt-4 ml-2 bg-blue-100 py-2 px-3 text-center">
+          Select an option
+        </button>
+        {this.state.isOpen && (
+          <ul className="bg-red-200 py-2 w-[180px] ml-2 cursor-pointer">
+            <li className="hover:bg-blue-100 pl-2" >Option 1</li>
+            <li className="hover:bg-blue-100 pl-2" >Option 2</li>
+            <li className="hover:bg-blue-100 pl-2" >Option 3</li>
+          </ul>
+        )}
+      </div>
+    );
+  }
+}
 
-let lower = "MAKE TEXT IN SMALL LETTERS!";
-let updatelower = lower.toLowerCase();
+// Code-Splitting
 
-//concat
 
-let textcon = "Concat";
-let textstr = "String";
-let  textnew= textcon.concat(" ", textstr);
+// 1) Bundling  =>   Bundling is the process of following imported files and merging them into a single file
 
-// trim
-let texttrim = "     Trim the text!     ";
-let texttrim2 = texttrim.trim();
 
-// trimStart() and trimEnd() to remove  the white space from start and end of the string.
+// Example
+// App:
 
-// padstart
+// // app.js
+// import { add } from './math.js';
 
-let textpad = "5";
-let paddedstr = textpad.padStart(4,"0");
-let paddedend = textpad.padEnd(4,"0");
+// console.log(add(16, 26)); // 42
+// // math.js
+// export function add(a, b) {
+//   return a + b;
+// }
+// Bundle:
 
-//charAt
+// function add(a, b) {
+//   return a + b;
+// }
 
-let textchar = "Text CharAt";
-let textcharAt = textchar.charAt(0);
+// console.log(add(16, 26)); // 42
 
-//charcodeAt
 
-let textcharcodeAt = textchar .charCodeAt(0);
 
-//split => to change a string in a array for and split
 
-let textsplit = "a,b,c,d,e,f";
-const myArray = textsplit.split(",");
+// **** React.lazy() *****
+
+// The fallback prop accepts any React elements that you want to render while waiting for the component to load. You can place the Suspense component anywhere above the lazy component. You can even wrap multiple lazy components with a single Suspense component.
+
+
+// import React, { Suspense } from 'react';
+
+// const OtherComponent = React.lazy(() => import('./OtherComponent'));
+// const AnotherComponent = React.lazy(() => import('./AnotherComponent'));
+
+// function MyComponent() {
+//   return (
+//     <div>
+//       <Suspense fallback={<div>Loading...</div>}>
+//         <section>
+//           <OtherComponent />
+//           <AnotherComponent />
+//         </section>
+//       </Suspense>
+//     </div>
+//   );
+// }
+
+
+
+//  ***** Context  *******
+
+// Context provides a way to pass data through the component tree without 
+// having to pass props down manually at every level.
+
+
+// Context lets us pass a value deep into the component tree
+// without explicitly threading it through every component.
+// Create a context for the current theme (with "light" as the default).
+const ThemeContext = React.createContext('light');
+
+class App extends React.Component {
+  render() {
+    // Use a Provider to pass the current theme to the tree below.
+    // Any component can read it, no matter how deep it is.
+    // In this example, we're passing "dark" as the current value.
+    return (
+      <ThemeContext.Provider value="dark">
+        <Toolbar />
+      </ThemeContext.Provider>
+    );
+  }
+}
+
+// A component in the middle doesn't have to
+// pass the theme down explicitly anymore.
+function Toolbar() {
+  return (
+    <div>
+      <ThemedButton />
+    </div>
+  );
+}
+
+class ThemedButton extends React.Component {
+  // Assign a contextType to read the current theme context.
+  // React will find the closest theme Provider above and use its value.
+  // In this example, the current theme is "dark".
+  static contextType = ThemeContext;
+  render() {
+    return <Button theme={this.context} />;
+  }
+}
+
+
+//API
+
+// Creates a Context object. When React renders a component that subscribes to this 
+// Context object it will read the current context value from the closest matching Provider above it in the tree.
+
+//Context.Provider
+
+//<MyContext.Provider value={/* some value */}>
+
+
+
+// Forwarding Refs
+
+
+// Ref forwarding is a technique for automatically passing a ref through a 
+// component to one of its children. This is typically not necessary for most 
+// components in the application. However, it can be useful for some kinds of components, 
+// especially in reusable component libraries. The most common scenarios are described below.
+
+// Webpack v4+ will minify your code by default in production mode.
+
+// **** Optimizing Performance ****
+
+// If you’re using Create React App, both Object.assign and the object spread syntax are available by default.
+
+//  function updateColorMap(colormap) {
+//   return Object.assign({}, colormap, {right: 'blue'});
+// }
+
+
+// function updateColorMap(colormap) {
+//   return {...colormap, right: 'blue'};
+// }
+
+//  ***** Fragment *****
+// A common pattern in React is for a component to 
+// return multiple elements. Fragments let you group 
+// a list of children without adding extra nodes to the DOM
+
+function Glossary(props) {
+  return (
+    <dl>
+      
+      {props.items.map(item => (
+        // Without the `key`, React will fire a key warning
+        <React.Fragment key={item.id}>
+          <dt>{item.term}</dt>
+          <dd>{item.description}</dd>
+        </React.Fragment>
+      ))}
+    </dl>
+  );
+}
+
+// ***** higher-order component *****
+
+// Concretely, a higher-order component is a 
+// function that takes a component and returns a new component.
+
+// .forEach()
+
+// This iterates over every element in an array with the same code, but does not change or mutate the array, and it returns undefined.
+
+// .map()
+
+// This method transforms an array by applying a function to all of its elements, and then building a new array from the returned values.
+
+// .reduce()
+
+// This method executes a provided function for each value of the array (from left to right).
+
+// .filter()
+
+
+// **** jsx in Depth *****
+
+// You can also use the self-closing form of the tag if there are no children. So:
+
+// <div className="sidebar" />
+
+
+// Using Dot Notation for JSX Type
+
+// function BlueDatePicker() {
+//   return <MyComponents.DatePicker color="blue" />;
+// }
+
+// User-Defined Components Must Be Capitalized
+
+// **** Refs and the DOM ****
+// Refs provide a way to access DOM nodes or React elements created in the render method.
+
+// When to Use Refs
+// There are a few good use cases for refs:
+
+// Managing focus, text selection, or media playback.
+// Triggering imperative animations.
+// Integrating with third-party DOM libraries.
+// Avoid using refs for anything that can be done declaratively.
+
+
+// **** Don’t Overuse Refs ****
+
+
+// Creating Refs
+
+// Refs are created using React.createRef()
+
+
+// class MyComponent extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.myRef = React.createRef();
+//   }
+//   render() {
+//     return <div ref={this.myRef} />;
+//   }
+// }
+
+
+// **** Refs and Function Components ****
+// By default, you may not use the ref attribute on function components because they don’t have instances:
+
+// function MyFunctionComponent() {
+//   return <input />;
+// }
+
+// class Parent extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.textInput = React.createRef();
+//   }
+//   render() {
+//     // This will *not* work!
+//     return (
+//       <MyFunctionComponent ref={this.textInput} />
+//     );
+//   }
+// }
