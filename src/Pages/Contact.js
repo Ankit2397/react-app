@@ -1,5 +1,7 @@
 import React, { Component } from 'react';  
 import { cloneDeepWithoutLoc } from '@babel/types';
+import ReactDOMServer from 'react-dom/server';
+
 class Contact extends React.Component {  
     constructor(props) {  
         super(props);  
@@ -29,7 +31,6 @@ class Contact extends React.Component {
                 <h4 className="mt-2">You entered: <span className="text-[#FE4A2A]">{ this.state.companyName }</span></h4>  
             </div> 
 
-<BlurExample/>
             </div>
 
             </div>
@@ -38,326 +39,201 @@ class Contact extends React.Component {
 }  
 export default Contact;
 
-// ******* Programmatically managing focus ******
 
+//  ****** Strict Mode ****
 
-// function CustomTextInput(props) {
+// StrictMode is a tool for highlighting potential problems in an application. Like Fragment, 
+// StrictMode does not render any visible UI. It activates additional checks and warnings for its descendants.
+
+// import React from 'react';
+
+// function ExampleApplication() {
 //   return (
 //     <div>
-//       <input ref={props.inputRef} />
+//       <Header />
+//       <React.StrictMode>
+//         <div>
+//           <ComponentOne />
+//           <ComponentTwo />
+//         </div>
+//       </React.StrictMode>
+//       <Footer />
 //     </div>
 //   );
 // }
 
-// class Parent extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.inputElement = React.createRef();
-//   }
+// **** strict mode checks will not be run against the Header and Footer components. **** 
+
+// Note:
+// Strict mode checks are run in development mode only; they do not impact the production build.
+
+// StrictMode currently helps with:
+
+// Identifying components with unsafe lifecycles
+// Warning about legacy string ref API usage
+// Warning about deprecated findDOMNode usage
+// Detecting unexpected side effects
+// Detecting legacy context API
+// Ensuring reusable state
+
+
+// **** Typechecking With PropTypes *****
+// import React, { useState } from 'react';
+// import props from 'prop-types';
+
+// const Example=()=> {
+// return(
+// 	<h1>{props.data}</h1>
+// 	);
+// 	}
+// 	function propsExample()
+// 	{	
+// 	const [change, setChange] = useState(true);
+// 		return (
+// 		<div>
+// 		<button onClick = {() => setChange(!change)}>
+// 			Click Here!
+// 		</button>
+// 		{change?
+// 			<Example data="Welcome to GeeksforGeeks"/>:
+// 			<Example data="A Computer Science Portal for Geeks"/>}
+// 		</div>
+// 		);
+// 	}
+
+// export default Example;
+
+
+
+// we recommend using controlled components to implement forms. 
+// In a controlled component, form data is handled by a React component. 
+// The alternative is uncontrolled components, where form data is handled by the DOM itself.
+
+//  **** The Uncontrolled *****
+// Uncontrolled inputs are like traditional HTML form inputs:
+
+// class Form extends Component {
+//   handleSubmitClick = () => {
+//     const name = this._name.value;
+//     // do something with `name`
+//   };
+
 //   render() {
 //     return (
-//       <CustomTextInput inputRef={this.inputElement} />
+//       <div>
+//         <input type="text" ref={(input) => (this._name = input)} />
+//         <button onClick={this.handleSubmitClick}>Sign up</button>
+//       </div>
 //     );
 //   }
 // }
 
-// // Now you can set focus when required.
-// this.inputElement.current.focus();
+
+// *** The Controlled ***
+// A controlled input accepts its current value as a prop, as well as a callback to change that value. 
+// You could say it's a more "React way" of approaching this (which doesn't mean you should always use it).
+
+// <input value={someValue} onChange={handleChange} />
 
 
-class BlurExample extends React.Component {
-  constructor(props) {
-    super(props);
 
-    this.state = { isOpen: false };
-    this.timeOutId = null;
+// class Form extends Component {
+//   constructor() {
+//     super();
+//     this.state = {
+//       name: "",
+//     };
+//   }
 
-    this.onClickHandler = this.onClickHandler.bind(this);
-    this.onBlurHandler = this.onBlurHandler.bind(this);
-    this.onFocusHandler = this.onFocusHandler.bind(this);
-  }
+//   handleNameChange = (event) => {
+//     this.setState({ name: event.target.value });
+//   };
 
-  onClickHandler() {
-    this.setState(currentState => ({
-      isOpen: !currentState.isOpen
-    }));
-  }
-
-  // We close the popover on the next tick by using setTimeout.
-  // This is necessary because we need to first check if
-  // another child of the element has received focus as
-  // the blur event fires prior to the new focus event.
-  onBlurHandler() {
-    this.timeOutId = setTimeout(() => {
-      this.setState({
-        isOpen: false
-      });
-    });
-  }
-
-  // If a child receives focus, do not close the popover.
-  onFocusHandler() {
-    clearTimeout(this.timeOutId);
-  }
-
-  render() {
-    // React assists us by bubbling the blur and
-    // focus events to the parent.
-    return (
-      <div onBlur={this.onBlurHandler}
-           onFocus={this.onFocusHandler}>
-        <button onClick={this.onClickHandler}
-                aria-haspopup="true"
-                aria-expanded={this.state.isOpen}
-              className="mt-4 ml-2 bg-blue-100 py-2 px-3 text-center">
-          Select an option
-        </button>
-        {this.state.isOpen && (
-          <ul className="bg-red-200 py-2 w-[180px] ml-2 cursor-pointer">
-            <li className="hover:bg-blue-100 pl-2" >Option 1</li>
-            <li className="hover:bg-blue-100 pl-2" >Option 2</li>
-            <li className="hover:bg-blue-100 pl-2" >Option 3</li>
-          </ul>
-        )}
-      </div>
-    );
-  }
-}
-
-// Code-Splitting
-
-
-// 1) Bundling  =>   Bundling is the process of following imported files and merging them into a single file
-
-
-// Example
-// App:
-
-// // app.js
-// import { add } from './math.js';
-
-// console.log(add(16, 26)); // 42
-// // math.js
-// export function add(a, b) {
-//   return a + b;
-// }
-// Bundle:
-
-// function add(a, b) {
-//   return a + b;
+//   render() {
+//     return (
+//       <div>
+//         <input type="text" value={this.state.name} onChange={this.handleNameChange} />
+//       </div>
+//     );
+//   }
 // }
 
-// console.log(add(16, 26)); // 42
 
+// Element	 ****
+// <input type="text" />	
+// <input type="checkbox" />	
+// <input type="radio" />
+// <textarea />
+// <select />
 
+// Value property ****
+// value="string"
+// checked={boolean}
+// checked={boolean}
+// value="string"	
+// value="option value"
 
+// Change callback	New value in the callback ****
+// onChange	event.target.value
+// onChange	event.target.checked
+// onChange	event.target.checked
+// onChange	event.target.value
+// onChange	event.target.value
 
-// **** React.lazy() *****
+// **** Web Components *****
+// Web Components provide a generic and reusable UI component model for the Web
+// One common confusion is that Web Components use “class” instead of “className”.
 
-// The fallback prop accepts any React elements that you want to render while waiting for the component to load. You can place the Suspense component anywhere above the lazy component. You can even wrap multiple lazy components with a single Suspense component.
+// To access the imperative APIs of a Web Component, you will need to use a ref to interact with the DOM node directly
+// function BrickFlipbox() {
+//   return (
+//     <brick-flipbox class="demo">
+//       <div>front</div>
+//       <div>back</div>
+//     </brick-flipbox>
+//   );
+// }
+//   function App() {
+//   const [show, setShow] = useState(true);
 
-
-// import React, { Suspense } from 'react';
-
-// const OtherComponent = React.lazy(() => import('./OtherComponent'));
-// const AnotherComponent = React.lazy(() => import('./AnotherComponent'));
-
-// function MyComponent() {
 //   return (
 //     <div>
-//       <Suspense fallback={<div>Loading...</div>}>
-//         <section>
-//           <OtherComponent />
-//           <AnotherComponent />
-//         </section>
-//       </Suspense>
+//       <button onClick={() => setShow(!show)}>toggle alert</button>
+
+//       <x-alert hidden={show} status="success" closable oncloseChange={() => setShow(!show)}>
+//         This is a Web Component in React
+//       </x-alert>
 //     </div>
 //   );
 // }
 
+//  ***** ReactDOMServer *****
+// The ReactDOMServer object enables you to render components to static markup. Typically, it’s used on a Node server:
 
+// // ES modules
+// import ReactDOMServer from 'react-dom/server';
+// // CommonJS
+// var ReactDOMServer = require('react-dom/server');
 
-//  ***** Context  *******
+// In the browser:
 
-// Context provides a way to pass data through the component tree without 
-// having to pass props down manually at every level.
-
-
-// Context lets us pass a value deep into the component tree
-// without explicitly threading it through every component.
-// Create a context for the current theme (with "light" as the default).
-const ThemeContext = React.createContext('light');
-
-class App extends React.Component {
-  render() {
-    // Use a Provider to pass the current theme to the tree below.
-    // Any component can read it, no matter how deep it is.
-    // In this example, we're passing "dark" as the current value.
-    return (
-      <ThemeContext.Provider value="dark">
-        <Toolbar />
-      </ThemeContext.Provider>
-    );
-  }
-}
-
-// A component in the middle doesn't have to
-// pass the theme down explicitly anymore.
-function Toolbar() {
-  return (
-    <div>
-      <ThemedButton />
-    </div>
-  );
-}
-
-class ThemedButton extends React.Component {
-  // Assign a contextType to read the current theme context.
-  // React will find the closest theme Provider above and use its value.
-  // In this example, the current theme is "dark".
-  static contextType = ThemeContext;
-  render() {
-    return <Button theme={this.context} />;
-  }
-}
-
-
-//API
-
-// Creates a Context object. When React renders a component that subscribes to this 
-// Context object it will read the current context value from the closest matching Provider above it in the tree.
-
-//Context.Provider
-
-//<MyContext.Provider value={/* some value */}>
-
-
-
-// Forwarding Refs
-
-
-// Ref forwarding is a technique for automatically passing a ref through a 
-// component to one of its children. This is typically not necessary for most 
-// components in the application. However, it can be useful for some kinds of components, 
-// especially in reusable component libraries. The most common scenarios are described below.
-
-// Webpack v4+ will minify your code by default in production mode.
-
-// **** Optimizing Performance ****
-
-// If you’re using Create React App, both Object.assign and the object spread syntax are available by default.
-
-//  function updateColorMap(colormap) {
-//   return Object.assign({}, colormap, {right: 'blue'});
+// var React = require('react');
+// var ReactDOM = require('react-dom');
+// class Blog extends React.Component
+// {
+// render()
+// {
+// return <div>EduCBA Trainings</div>;
 // }
-
-
-// function updateColorMap(colormap) {
-//   return {...colormap, right: 'blue'};
 // }
+// ReactDOM.render(<Blog />, node);
+// On the server:
 
-//  ***** Fragment *****
-// A common pattern in React is for a component to 
-// return multiple elements. Fragments let you group 
-// a list of children without adding extra nodes to the DOM
-
-function Glossary(props) {
-  return (
-    <dl>
-      
-      {props.items.map(item => (
-        // Without the `key`, React will fire a key warning
-        <React.Fragment key={item.id}>
-          <dt>{item.term}</dt>
-          <dd>{item.description}</dd>
-        </React.Fragment>
-      ))}
-    </dl>
-  );
-}
-
-// ***** higher-order component *****
-
-// Concretely, a higher-order component is a 
-// function that takes a component and returns a new component.
-
-// .forEach()
-
-// This iterates over every element in an array with the same code, but does not change or mutate the array, and it returns undefined.
-
-// .map()
-
-// This method transforms an array by applying a function to all of its elements, and then building a new array from the returned values.
-
-// .reduce()
-
-// This method executes a provided function for each value of the array (from left to right).
-
-// .filter()
-
-
-// **** jsx in Depth *****
-
-// You can also use the self-closing form of the tag if there are no children. So:
-
-// <div className="sidebar" />
-
-
-// Using Dot Notation for JSX Type
-
-// function BlueDatePicker() {
-//   return <MyComponents.DatePicker color="blue" />;
+// var React = require('react');
+// var ReactDOMServer = require('react-dom/server');
+// class Blog extends React.Component {
+// render() {
+// return <div>EduCBA Trainings</div>;
 // }
-
-// User-Defined Components Must Be Capitalized
-
-// **** Refs and the DOM ****
-// Refs provide a way to access DOM nodes or React elements created in the render method.
-
-// When to Use Refs
-// There are a few good use cases for refs:
-
-// Managing focus, text selection, or media playback.
-// Triggering imperative animations.
-// Integrating with third-party DOM libraries.
-// Avoid using refs for anything that can be done declaratively.
-
-
-// **** Don’t Overuse Refs ****
-
-
-// Creating Refs
-
-// Refs are created using React.createRef()
-
-
-// class MyComponent extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.myRef = React.createRef();
-//   }
-//   render() {
-//     return <div ref={this.myRef} />;
-//   }
 // }
-
-
-// **** Refs and Function Components ****
-// By default, you may not use the ref attribute on function components because they don’t have instances:
-
-// function MyFunctionComponent() {
-//   return <input />;
-// }
-
-// class Parent extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.textInput = React.createRef();
-//   }
-//   render() {
-//     // This will *not* work!
-//     return (
-//       <MyFunctionComponent ref={this.textInput} />
-//     );
-//   }
-// }
+// ReactDOMServer.renderToString(<Blog />);
