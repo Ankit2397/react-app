@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Fetchapi from "./fetchapi.js";
 
 const Home = (Props) =>{
   const [print, setPrint] = useState("");
@@ -33,6 +34,9 @@ const Home = (Props) =>{
     </div>
  <div>
    <button className="text-center bg-blue-200 py-2 px-4 w-[160px] my-4 mx-6" onClick={()=>setPrint(!print)}>Print Console</button>
+ </div>
+ <div>
+ <Fetchapi/>
  </div>
     </div>
   );
