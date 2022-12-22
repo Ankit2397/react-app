@@ -1,6 +1,11 @@
 import React, { Component } from 'react';  
-import { cloneDeepWithoutLoc } from '@babel/types';
+import { cloneDeepWithoutLoc, importDefaultSpecifier, importAttribute } from '@babel/types';
 import ReactDOMServer from 'react-dom/server';
+import ForceUpdate from "./force.js"
+import FindDom from "./find.js"
+import Condition from "./Condition.js"
+import Timepicker from "./timepicker.js"
+
 
 class Contact extends React.Component {  
     constructor(props) {  
@@ -31,8 +36,23 @@ class Contact extends React.Component {
                 <h4 className="mt-2">You entered: <span className="text-[#FE4A2A]">{ this.state.companyName }</span></h4>  
             </div> 
 
-            </div>
 
+<div>
+    {/* This method allows us to update the component manually. */}
+    <ForceUpdate/> 
+</div>
+<div>
+{/* For DOM manipulation, you need to use ReactDOM.findDOMNode() method. 
+This method allows us to find or access the underlying DOM node. */}
+    <FindDom/>
+</div>
+<div>
+    <Condition />
+</div>
+<div>
+    <Timepicker/>
+</div>
+            </div>
             </div>
         );  
     }  
@@ -40,200 +60,30 @@ class Contact extends React.Component {
 export default Contact;
 
 
-//  ****** Strict Mode ****
+// ***** Fragments *****
+// To solve this problem, React introduced Fragments from the 16.2 and above version. 
+// Fragments allow you to group a list of children without adding extra nodes to the DOM.
+// It makes the execution of code faster as compared to the div tag.
+// It takes less memory.
 
-// StrictMode is a tool for highlighting potential problems in an application. Like Fragment, 
-// StrictMode does not render any visible UI. It activates additional checks and warnings for its descendants.
-
-// import React from 'react';
-
-// function ExampleApplication() {
-//   return (
-//     <div>
-//       <Header />
-//       <React.StrictMode>
-//         <div>
-//           <ComponentOne />
-//           <ComponentTwo />
-//         </div>
-//       </React.StrictMode>
-//       <Footer />
-//     </div>
-//   );
-// }
-
-// **** strict mode checks will not be run against the Header and Footer components. **** 
-
-// Note:
-// Strict mode checks are run in development mode only; they do not impact the production build.
-
-// StrictMode currently helps with:
-
-// Identifying components with unsafe lifecycles
-// Warning about legacy string ref API usage
-// Warning about deprecated findDOMNode usage
-// Detecting unexpected side effects
-// Detecting legacy context API
-// Ensuring reusable state
+// Syntax
+// <React.Fragment>  
+//       <h2> child1 </h2>   
+//     <p> child2 </p>   
+// </React.Fragment> 
 
 
-// **** Typechecking With PropTypes *****
-// import React, { useState } from 'react';
-// import props from 'prop-types';
-
-// const Example=()=> {
-// return(
-// 	<h1>{props.data}</h1>
-// 	);
-// 	}
-// 	function propsExample()
-// 	{	
-// 	const [change, setChange] = useState(true);
-// 		return (
-// 		<div>
-// 		<button onClick = {() => setChange(!change)}>
-// 			Click Here!
-// 		</button>
-// 		{change?
-// 			<Example data="Welcome to GeeksforGeeks"/>:
-// 			<Example data="A Computer Science Portal for Geeks"/>}
-// 		</div>
-// 		);
-// 	}
-
-// export default Example;
+// ***** React Flux Concept ******
+// It is a kind of architecture that complements React as view and follows the concept of Unidirectional Data Flow model. 
+// It is useful when the project has dynamic data, and we need to keep the data updated in an effective manner.
 
 
+// **** Unit Testing in React *****
+// Unit testing is a method of testing that tests the individual software unit in theprocess of isolation. 
+// Check the output of a function for any given input.
 
-// we recommend using controlled components to implement forms. 
-// In a controlled component, form data is handled by a React component. 
-// The alternative is uncontrolled components, where form data is handled by the DOM itself.
+// It means verifying that the component renders for any specific accessory to react components.
 
-//  **** The Uncontrolled *****
-// Uncontrolled inputs are like traditional HTML form inputs:
-
-// class Form extends Component {
-//   handleSubmitClick = () => {
-//     const name = this._name.value;
-//     // do something with `name`
-//   };
-
-//   render() {
-//     return (
-//       <div>
-//         <input type="text" ref={(input) => (this._name = input)} />
-//         <button onClick={this.handleSubmitClick}>Sign up</button>
-//       </div>
-//     );
-//   }
-// }
-
-
-// *** The Controlled ***
-// A controlled input accepts its current value as a prop, as well as a callback to change that value. 
-// You could say it's a more "React way" of approaching this (which doesn't mean you should always use it).
-
-// <input value={someValue} onChange={handleChange} />
-
-
-
-// class Form extends Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//       name: "",
-//     };
-//   }
-
-//   handleNameChange = (event) => {
-//     this.setState({ name: event.target.value });
-//   };
-
-//   render() {
-//     return (
-//       <div>
-//         <input type="text" value={this.state.name} onChange={this.handleNameChange} />
-//       </div>
-//     );
-//   }
-// }
-
-
-// Element	 ****
-// <input type="text" />	
-// <input type="checkbox" />	
-// <input type="radio" />
-// <textarea />
-// <select />
-
-// Value property ****
-// value="string"
-// checked={boolean}
-// checked={boolean}
-// value="string"	
-// value="option value"
-
-// Change callback	New value in the callback ****
-// onChange	event.target.value
-// onChange	event.target.checked
-// onChange	event.target.checked
-// onChange	event.target.value
-// onChange	event.target.value
-
-// **** Web Components *****
-// Web Components provide a generic and reusable UI component model for the Web
-// One common confusion is that Web Components use “class” instead of “className”.
-
-// To access the imperative APIs of a Web Component, you will need to use a ref to interact with the DOM node directly
-// function BrickFlipbox() {
-//   return (
-//     <brick-flipbox class="demo">
-//       <div>front</div>
-//       <div>back</div>
-//     </brick-flipbox>
-//   );
-// }
-//   function App() {
-//   const [show, setShow] = useState(true);
-
-//   return (
-//     <div>
-//       <button onClick={() => setShow(!show)}>toggle alert</button>
-
-//       <x-alert hidden={show} status="success" closable oncloseChange={() => setShow(!show)}>
-//         This is a Web Component in React
-//       </x-alert>
-//     </div>
-//   );
-// }
-
-//  ***** ReactDOMServer *****
-// The ReactDOMServer object enables you to render components to static markup. Typically, it’s used on a Node server:
-
-// // ES modules
-// import ReactDOMServer from 'react-dom/server';
-// // CommonJS
-// var ReactDOMServer = require('react-dom/server');
-
-// In the browser:
-
-// var React = require('react');
-// var ReactDOM = require('react-dom');
-// class Blog extends React.Component
-// {
-// render()
-// {
-// return <div>EduCBA Trainings</div>;
-// }
-// }
-// ReactDOM.render(<Blog />, node);
-// On the server:
-
-// var React = require('react');
-// var ReactDOMServer = require('react-dom/server');
-// class Blog extends React.Component {
-// render() {
-// return <div>EduCBA Trainings</div>;
-// }
-// }
-// ReactDOMServer.renderToString(<Blog />);
+// It exercises your code.
+// It prevents the regressions.
+// Faster feedback in the development.

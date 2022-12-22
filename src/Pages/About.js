@@ -1,9 +1,6 @@
 import { useState, createContext, useContext,useReducer ,useId ,Suspense ,  useDeferredValue} from "react";
 import { useSyncExternalStore, useDebugValue } from 'react';
 import { useEffect, useRef } from "react";
-import SearchResults from './SearchResults.js';
-import Call from "./usecall/index.js";
-import Memor from "./Memo.js";
 
 const About = (props) =>{
   const [count, setCount] = useState(0);
@@ -38,14 +35,6 @@ const About = (props) =>{
       <div>
       <h2 className="text-center text-2xl">UserReducer Hook</h2>
       <Todos/>
-      </div>
-      <div>
-      <h2 className="text-center text-2xl">CallbackHook</h2>
-      <Call/>
-      </div>
-      <div>
-      <h2 className="text-center text-2xl">UseMemoHook</h2>
-      <Memor/>
       </div>
       <div>
       <h2 className="text-center text-2xl">UseRefHook</h2>
