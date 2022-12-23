@@ -87,3 +87,7 @@ export default Contact;
 // It exercises your code.
 // It prevents the regressions.
 // Faster feedback in the development.
+
+// **** BrowserRouter in React ****
+// React Router is a standard library for routing in React. It enables navigation between views from 
+// different components in a React application, allows the browser URL to be changed, and keeps the UI in sync with the URL.

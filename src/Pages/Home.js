@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import Table from "./table.js"
+import Table from "./table.js";
+import PropTy from "./Proptypes.js";
+import Add from "./codespliting"
  
 const Home = (Props) =>{
   const [print, setPrint] = useState("");
@@ -29,7 +31,6 @@ const Home = (Props) =>{
         <a href="#" className="bg-blue-100 py-1 px-3 rounded-[5px]">Shop Now</a>
       </div>
     </div>
-
     </div>
     </div>
  <div>
@@ -38,6 +39,13 @@ const Home = (Props) =>{
 <div>
   <Table/>
 </div>
+ <div>
+   <PropTy/>
+ </div>
+ <div>
+   <Add/>
+ </div>
+
     </div>
   );
 }
