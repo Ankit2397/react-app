@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import Table from "./table.js"
- 
+import Acess from './access.js';
+import Context from './context.js';
+import Error from './error.js';
+import Forref from './forref.js';
+import Greeting from './proptypes.js';
 const Home = (Props) =>{
   const [print, setPrint] = useState("");
     if(!print){
@@ -35,8 +39,25 @@ const Home = (Props) =>{
  <div>
    <button className="text-center bg-blue-200 py-2 px-4 w-[160px] my-4 mx-6" onClick={()=>setPrint(!print)}>Print Console</button>
  </div>
+ <div className="flex gap-5">
 <div>
   <Table/>
+</div>
+<div className="mb-4 ml-4">
+  <Acess/>
+</div>
+</div>
+<div>
+  <Context/>
+</div>
+<div>
+  <Error/>
+</div>
+<div>
+  <Forref/>
+</div>
+<div>
+ < Greeting/>
 </div>
     </div>
   );

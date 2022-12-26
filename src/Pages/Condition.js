@@ -28,9 +28,6 @@ function UserLoggin(props) {
     }  
     return <GuestLoggin />;  
   }  
-
-
-
 //   ** Logical && operator **
 // This operator is used for checking the condition. If the condition is true, it will return the element right after &&, and if it is false, React will ignore and skip it.
 
