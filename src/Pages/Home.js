@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Drops from "../Components/dropdown.js";
+import Form from "./register.js";
+import Progessbar from "./progress.js";
 
 const Home = (Props) =>{
   const [print, setPrint] = useState("");
@@ -32,17 +34,31 @@ const Home = (Props) =>{
 
     </div>
     </div>
-    <div className="flex gap-5">
-      
- <div>
-   <button className="text-center bg-[rgb(147,197,253)] py-2 px-4 w-[160px] my-4 mx-6" onClick={()=>setPrint(!print)}>Print Console</button>
- </div>
- <div className="mt-4">
-   <Drops/>
+   
+ <div className="mt-4 flex  justify-between items-center gap-4">
+   <div className="w-1/2 pl-2">
+<img src="./images/lap.jpg" alt="laptop"></img>
+   </div>
+   <div className="w-1/2 pr-2">
+   <Form/>
+   </div>
  </div>
 
- </div>
+ <div className="flex gap-5">
+      
+      <div>
+        <button className="text-center bg-[rgb(147,197,253)] py-2 px-4 w-[160px] my-4 mx-6" onClick={()=>setPrint(!print)}>Print Console</button>
+      </div>
+      <div className="mt-4">
+        <Drops/>
+      </div>
+     
+      <div className="mt-4">
+       < Progessbar/>
+     </div>
+      </div>
     </div>
+    
   );
 }
 export default Home;

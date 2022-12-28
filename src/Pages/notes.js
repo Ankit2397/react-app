@@ -1,22 +1,63 @@
-// **** Validating Props *****
 
-// App.propTypes is used for props validation in react component. When some of the 
-// props are passed with an invalid type, you will get the warnings on JavaScript console. 
-// After specifying the validation patterns, you will set the App.defaultProps.
+// ReactJS is an open-source JavaScript library used to build the user interface for Web Applications. 
+// It is responsible only for the view layer of the application. 
+// It provides developers to compose complex UIs from a small and isolated piece of code called "components.
 
+// Advantage of ReactJS
+// Easy to Learn and Use
+// Reusable Components
+// Performance Enhancement
+// Creating Dynamic Web Applications Becomes Easier
 
-// React.js Vs. Node.js
-// Node.js and React.js are both JavaScript technologies, but they are different things. 
-// The primary difference between Node.js and React.js is that Node.js is a back-end framework, 
-// and React is used to develop user interfaces. But, they both have advantages and disadvantages with special use cases.
+// React Native
+// React Native is an open-source JavaScript framework used for developing a mobile application for iOS Android, and Windows.
+// t uses only JavaScript to build a cross-platform mobile app. React Native is same as React, 
+// but it uses native components instead of using web components as building blocks. 
+// It targets mobile platforms rather than the browser.
 
-// Read if you want to know which one we have to use for our next JavaScript project. Below 
-// we see the features of Node.js and React.js and the pros and cons of both Node and React. 
-// We can decide which will suits our project best and according to the need after reading this article.
+// Advantages of React Native
+// Native Components
+// Cross-Platform Usage
+// javaScript
+// Improving with Time
 
+// When to use a Hooks
+// If you write a function component, and then you want to add some state to it, previously you do this by converting it 
+// to a class. But, now you can do it by using a Hook inside the existing function component.
 
 // Rules of Hooks
 
 // 1. Only call Hooks at the top level
 
 // 2. Only call Hooks from React functions
+
+
+
+// React Redux is the official UI bindings for react Application. 
+// It is kept up-to-date with any API changes to ensure that your React components behave as expected.
+// It encourages good 'React' architecture.
+// It implements many performance optimizations internally, which allows to components re-render only when it actually needs.
+
+// **** The components of Redux architecture are explained below. ****
+
+// #STORE: A Store is a place where the entire state of your application lists. 
+// It manages the status of the application and has a dispatch(action) function. 
+// It is like a brain responsible for all moving parts in Redux.
+
+// #ACTION: Action is sent or dispatched from the view which are payloads that can be read by Reducers.
+//  It is a pure object created to store the information of the user's event. 
+//  It includes information such as type of action, time of occurrence, location of occurrence, 
+//  its coordinates, and which state it aims to change.
+
+// #REDUCER: Reducer read the payloads from the actions and then updates the store via the state accordingly.
+// It is a pure function to return a new state from the initial state.
+
+// #Redux Installation
+// Requirements: React Redux requires React 16.8.3 or later version.
+
+// To use React Redux with React application, you need to install the below command.
+
+// $ npm install redux react-redux --save  
+
+
+
