@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import Drops from "../Components/dropdown.js";
 import Form from "./register.js";
 import Progessbar from "./progress.js";
+import Line from "./line.js";
+import Canvas from "../Components/canvas"
+import PostList from "./axios.js"
+
 
 const Home = (Props) =>{
   const [print, setPrint] = useState("");
@@ -52,10 +56,19 @@ const Home = (Props) =>{
       <div className="mt-4">
         <Drops/>
       </div>
+      <div className="mt-4">
+    <Canvas/>
+  </div>
      
       <div className="mt-4">
        < Progessbar/>
      </div>
+      </div>
+      <div>
+        <Line/>
+      </div>
+      <div>
+        <PostList/>
       </div>
     </div>
     

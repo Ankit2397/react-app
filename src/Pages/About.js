@@ -3,6 +3,8 @@ import { useSyncExternalStore, useDebugValue } from 'react';
 import { useEffect, useRef } from "react";
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
+import Check  from "./multiple.js"
+import Animation  from "./Animations.js"
 
 const About = (props) =>{
   const [count, setCount] = useState(0);
@@ -29,6 +31,13 @@ const About = (props) =>{
       :loggedIn==2? <h2>user3</h2>
       :<h2>user2</h2>
 }
+      </div>
+      <div>
+        <Check />
+
+      </div>
+      <div>
+        <Animation/>
       </div>
       <div className="my-2">
         <Allaccordian/>

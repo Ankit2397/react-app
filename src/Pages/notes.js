@@ -3,34 +3,13 @@
 // It is responsible only for the view layer of the application. 
 // It provides developers to compose complex UIs from a small and isolated piece of code called "components.
 
-// Advantage of ReactJS
-// Easy to Learn and Use
-// Reusable Components
-// Performance Enhancement
-// Creating Dynamic Web Applications Becomes Easier
 
-// React Native
-// React Native is an open-source JavaScript framework used for developing a mobile application for iOS Android, and Windows.
-// t uses only JavaScript to build a cross-platform mobile app. React Native is same as React, 
-// but it uses native components instead of using web components as building blocks. 
-// It targets mobile platforms rather than the browser.
-
-// Advantages of React Native
-// Native Components
-// Cross-Platform Usage
-// javaScript
-// Improving with Time
-
-// When to use a Hooks
-// If you write a function component, and then you want to add some state to it, previously you do this by converting it 
-// to a class. But, now you can do it by using a Hook inside the existing function component.
-
-// Rules of Hooks
-
-// 1. Only call Hooks at the top level
-
-// 2. Only call Hooks from React functions
-
+// **** React Portals ****
+// Before React 16.0 version, it is very tricky to render the child component outside of its parent component hierarchy. 
+// If we do this, it breaks the convention where a component needs to render as a new element and follow a parent-child 
+// hierarchy.In React, the parent component always wants to go where its child component goes. That's why React portal 
+// concept comes in.
+// ReactDOM.createPortal(child, container)  
 
 
 // React Redux is the official UI bindings for react Application. 
