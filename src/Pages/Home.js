@@ -3,9 +3,12 @@ import Drops from "../Components/dropdown.js";
 import Form from "./register.js";
 import Progessbar from "./progress.js";
 import Line from "./line.js";
-import Canvas from "../Components/canvas"
-import PostList from "./axios.js"
-
+import Canvas from "../Components/canvas";
+// import PostList from "./axios.js";
+import LineChartss from "../Components/Linechart";
+import Piechatss from "../Components/Piechart.js";
+import Piechar from "../Components/Piechar";
+import styles from '../Button.module.css';
 
 const Home = (Props) =>{
   const [print, setPrint] = useState("");
@@ -52,6 +55,7 @@ const Home = (Props) =>{
       
       <div>
         <button className="text-center bg-[rgb(147,197,253)] py-2 px-4 w-[160px] my-4 mx-6" onClick={()=>setPrint(!print)}>Print Console</button>
+        <button className={styles.error}>Error Button</button>  {/* adding Css Modules */} 
       </div>
       <div className="mt-4">
         <Drops/>
@@ -68,8 +72,15 @@ const Home = (Props) =>{
         <Line/>
       </div>
       <div>
-        <PostList/>
+        {/* <PostList/> */}
       </div>
+      <div>
+        <LineChartss/>
+        </div>
+        <div className="flex">
+        <Piechatss/>
+        <Piechar/>
+        </div>
     </div>
     
   );
