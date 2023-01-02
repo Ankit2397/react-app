@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
 import Drops from "../Components/dropdown.js";
 import Form from "./register.js";
+import Valform from "./Valform.js";
+import Weather from "./wheather.js";
 import Progessbar from "./progress.js";
 import Line from "./line.js";
+import Content from "./content.js";
+import MyDropzone from "./drop.js";
+import Drag from "./drag.js";
+import Hookform from "./Hokform.js";
+import FlipMovee from "./Flip.js";
+import Spinner from "./spinner.js";
+import MyGallery from "./Gallery.js";
 import Canvas from "../Components/canvas";
 // import PostList from "./axios.js";
 import LineChartss from "../Components/Linechart";
@@ -69,10 +78,36 @@ const Home = (Props) =>{
      </div>
       </div>
       <div>
+        <Content />
+      </div>
+      <div>
         <Line/>
       </div>
       <div>
+        <Weather/>
+      </div>
+      <div>
         {/* <PostList/> */}
+
+        <Valform/>
+      </div>
+      <div>
+        <Drag/>
+      </div>
+      <div>
+        <MyDropzone/>
+      </div>
+      <div>
+        <FlipMovee/>
+      </div>
+      <div>
+      <Spinner/>
+      </div>
+      <div>
+        <MyGallery/>
+      </div>
+      <div>
+        <Hookform/>
       </div>
       <div>
         <LineChartss/>

@@ -1,16 +1,28 @@
 import react, { useState, useEffect } from 'react'
 
+
 function Form(){
     const data={name:"" ,email:"",password:""};
     const [inputData,setInputData]=useState(data);
     const [flag,setFlag] = useState(false);
+    	
+// const [userName, setUserName] = useState("");
     
+
+// useEffect(() => { 
+// localStorage.setItem("name",JSON.stringify(name))
+// }, [name]);
+
+
+
     useEffect(() =>{
      console.log("Registered")
     } ,[flag]);
     function handleData(e){
         setInputData({...inputData , [e.target.name]:e.target.value})
+        const Store = localStorage.setItem("name",JSON.stringify(inputData.name  , inputData.email , inputData.password))
   console.log(inputData)
+  console.log(Store)
     }
     function handleSubmit(e){
         e.preventDefault();
@@ -33,13 +45,13 @@ function Form(){
             <h2 className="font-bold text-2xl text-center text-white text-center">Reigtration Form</h2>
             </div>
             <div className="py-2 border-[1px] focus:border-blue-500 border-gray-400 pl-2 mb-2 mt-2 rounded-[5px]">
-                <input type="text" placeholder="Enter Your Name" className="w-full outline-none" name="name" onChange={handleData}></input>
+                <input type="text" placeholder="Enter Your Name" className="w-full outline-none" value = {inputData.name} name="name" onChange={handleData}></input>
             </div>
             <div className="py-2 border-[1px] border-gray-400 pl-2 mb-2 rounded-[5px]">
-            <input type="Email" placeholder="Enter Your Email" name="email" className="w-full outline-none" onChange={handleData}></input>
+            <input type="Email" placeholder="Enter Your Email" name="email" className="w-full outline-none" value = {inputData.email} onChange={handleData}></input>
  </div>
  <div className="py-2 border-[1px] border-gray-400 pl-2 mb-2 rounded-[5px]">
-            <input type="Password" placeholder="Enter Your Password" className="w-full outline-none" name="password" onChange={handleData}></input>
+            <input type="Password" placeholder="Enter Your Password" className="w-full outline-none" value = {inputData.password} name="password" onChange={handleData}></input>
  </div>
  <div className="text-center my-0 mx-auto">
      <button type="submit"

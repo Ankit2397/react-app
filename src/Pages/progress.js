@@ -41,7 +41,7 @@ function CircularProgressBar() {
             // pathTransition: 'none',
         
             // Colors
-            pathColor: `rgba(62, 152, 199, ${percentage / 100})`,
+            pathColor: `rgb(239,68,68, ${percentage / 100})`,
             textColor: 'black',
             trailColor: '#d6d6d6',
             backgroundColor: '#3e98c7',
