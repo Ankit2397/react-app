@@ -2,21 +2,18 @@ import React, { useState } from 'react';
 import Drops from "../Components/dropdown.js";
 import Form from "./register.js";
 import Valform from "./Valform.js";
-import Weather from "./wheather.js";
 import Progessbar from "./progress.js";
-import Line from "./line.js";
 import Content from "./content.js";
-import MyDropzone from "./drop.js";
-import Drag from "./drag.js";
 import Hookform from "./Hokform.js";
-import FlipMovee from "./Flip.js";
 import Spinner from "./spinner.js";
 import MyGallery from "./Gallery.js";
+import VideoPlayer from "./vedio.js";
+import Rooms from "./room.js";
+import GooglePayButton from "./pay.js";
 import Canvas from "../Components/canvas";
 // import PostList from "./axios.js";
 import LineChartss from "../Components/Linechart";
 import Piechatss from "../Components/Piechart.js";
-import Piechar from "../Components/Piechar";
 import styles from '../Button.module.css';
 
 const Home = (Props) =>{
@@ -67,9 +64,6 @@ const Home = (Props) =>{
         <button className={styles.error}>Error Button</button>  {/* adding Css Modules */} 
       </div>
       <div className="mt-4">
-        <Drops/>
-      </div>
-      <div className="mt-4">
     <Canvas/>
   </div>
      
@@ -81,24 +75,16 @@ const Home = (Props) =>{
         <Content />
       </div>
       <div>
-        <Line/>
-      </div>
-      <div>
-        <Weather/>
-      </div>
-      <div>
         {/* <PostList/> */}
 
         <Valform/>
       </div>
+     
       <div>
-        <Drag/>
+        <Rooms/>
       </div>
       <div>
-        <MyDropzone/>
-      </div>
-      <div>
-        <FlipMovee/>
+        <VideoPlayer/>
       </div>
       <div>
       <Spinner/>
@@ -114,7 +100,9 @@ const Home = (Props) =>{
         </div>
         <div className="flex">
         <Piechatss/>
-        <Piechar/>
+        </div>
+        <div>
+        <GooglePayButton/>
         </div>
     </div>
     
