@@ -19,5 +19,8 @@ const params = {
     },
     body: JSON.stringify(params)
   });
+ const Data = await response.json();
   
-  const data = await response.json();
+ export default Data;
+ 
+ 

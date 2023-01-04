@@ -11,7 +11,7 @@ import VideoPlayer from "./vedio.js";
 import Rooms from "./room.js";
 import GooglePayButton from "./pay.js";
 import Canvas from "../Components/canvas";
-// import PostList from "./axios.js";
+import PostList from "./axios.js";
 import LineChartss from "../Components/Linechart";
 import Piechatss from "../Components/Piechart.js";
 import styles from '../Button.module.css';
@@ -75,7 +75,7 @@ const Home = (Props) =>{
         <Content />
       </div>
       <div>
-        {/* <PostList/> */}
+        <PostList/>
 
         <Valform/>
       </div>

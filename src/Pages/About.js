@@ -2,12 +2,27 @@ import { useState} from "react";
 import Accordion from 'react-bootstrap/Accordion';
 import Animation  from "./Animations.js";
 import List  from "../Components/array.js";
-import Panel from "./Acc.js";
 import Perserve from "./Perserve.js";
 import Page from "./Props/main.js";
+import Axioss from "./axios2.js";
+
+
 
 const About = (props) =>{
   const [loggedIn,setLoggedIn]=useState(false);
+
+  // Array Of Objects
+  var Student = [
+   {name:"Rom", age:15},
+   {name:"Rahul", age:25},
+   {name:"Ronny", age:45},
+  ];
+
+
+  console.log(Student);
+  for(var a=0; a< Student.length;a++){
+    console.log(Student[a].name)
+  }
   return (
     <div>
     <div className="w-full py-0 px-[15px] max-w-[1300px] my-0 mx-auto">   
@@ -31,13 +46,14 @@ const About = (props) =>{
        <List />
      </div>
      <div>
-       <Panel/>
-       </div>
-     <div>
        <Perserve/>
      </div>
      <div>
        <Page/>
+     </div>
+     <div>
+       {/* <Data/> */}
+        <Axioss/>
      </div>
 
 
