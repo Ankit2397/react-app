@@ -1,7 +1,9 @@
 import react, { useState, useEffect } from 'react'
+// import { useHistory } from "react-router-dom";
 
 
 function Form(){
+    // let history = useHistory();
     const data={name:"" ,email:"",password:""};
     const [inputData,setInputData]=useState(data);
     const [flag,setFlag] = useState(false);
@@ -24,6 +26,11 @@ function Form(){
   console.log(inputData)
   console.log(Store)
     }
+
+    // function Logout(){
+    //     localStorage.clear();
+    //     history.push("/about")
+    // }
     function handleSubmit(e){
         e.preventDefault();
         if(!inputData.name || !inputData.email || !inputData.password )
@@ -59,6 +66,7 @@ function Form(){
  Submit
      </button>
      <button type="reset" className="bg-red-500 w-[120px] ml-2 py-2 px-3 text-white rounded-[5px]">Reset</button>
+     {/* <button onClick={Logout()} className="bg-red-500 w-[120px] ml-2 py-2 px-3 text-white rounded-[5px]">Logout</button> */}
  </div>
  <div>
      {inputData.name }
