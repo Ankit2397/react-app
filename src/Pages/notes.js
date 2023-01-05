@@ -95,3 +95,8 @@ function func(){
 //     await printString("C")
 //   }
 //   printAll()
+
+
+// Nested routes enables you to have multiple components render on the same page with route parity. 
+// This is useful for app experiences where you want the user to be able to "drill down" into content 
+// and not lose their way, such as in forums or blogs.

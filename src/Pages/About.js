@@ -5,11 +5,13 @@ import List  from "../Components/array.js";
 import Perserve from "./Perserve.js";
 import Page from "./Props/main.js";
 import Axioss from "./axios2.js";
+import { Outlet } from "react-router-dom"
 
 
 
 const About = (props) =>{
   const [loggedIn,setLoggedIn]=useState(false);
+  const [currentUser, setCurrentUser] = React.useState([]);
 
   // Array Of Objects
   var Student = [
@@ -55,7 +57,9 @@ const About = (props) =>{
        {/* <Data/> */}
         <Axioss/>
      </div>
-
+<div>
+<Outlet context={[currentUser]}/>
+</div>
 
     </div>
   );

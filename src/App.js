@@ -10,12 +10,11 @@ function App() {
     <BrowserRouter>
     <NavBar />
     <Routes>
-    <Route>
      <Route path="/" element={<Home num="2" />} />   
      <Route path="/contact" element={<Contact />} />  
      <Route path="/about" element={<About color="Black"/>} />  
-
-   </Route>
+        <Route path='new' element={<NewPost />} /> {/*A nested route!*/}
+        <Route path=':postId' element={<Post />} /> {/*A nested route!*/}
  </Routes>
 </BrowserRouter>
 
