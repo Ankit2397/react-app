@@ -1,4 +1,5 @@
-import { objectTypeSpreadProperty } from "@babel/types";
+import { objectTypeSpreadProperty, functionExpression } from "@babel/types";
+import { promised } from "q";
 
 // ReactJS is an open-source JavaScript library used to build the user interface for Web Applications. 
 // It is responsible only for the view layer of the application. 
@@ -96,6 +97,8 @@ function func(){
 //   }
 //   printAll()
 
+// async function return a promise
+// and await is used in async function to wait for resole a promise
 
 // Nested routes enables you to have multiple components render on the same page with route parity. 
 // This is useful for app experiences where you want the user to be able to "drill down" into content 

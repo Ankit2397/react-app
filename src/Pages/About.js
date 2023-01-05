@@ -5,8 +5,11 @@ import List  from "../Components/array.js";
 import Perserve from "./Perserve.js";
 import Page from "./Props/main.js";
 import Axioss from "./axios2.js";
-import { Outlet } from "react-router-dom"
-
+import { Outlet } from "react-router-dom";
+import React from 'react';
+import Parent from "./parent";
+import Nested from "./nested";
+import Put from "./put";
 
 
 const About = (props) =>{
@@ -60,7 +63,15 @@ const About = (props) =>{
 <div>
 <Outlet context={[currentUser]}/>
 </div>
-
+<div>
+  <Parent />
+</div>
+<div>
+  <Nested/>
+</div>
+<div>
+  <Put/>
+</div>
     </div>
   );
 }

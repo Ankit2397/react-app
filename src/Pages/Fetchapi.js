@@ -7,11 +7,9 @@ fetch(url)
     console.log(reposList);
   })
 .catch(err => console.log(err))
-
 const params = {
     id: 123
   }
-  
   const response = await fetch('url', {
     method: 'POST',
     headers: {

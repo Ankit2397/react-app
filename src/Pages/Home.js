@@ -9,6 +9,7 @@ import Spinner from "./spinner.js";
 import MyGallery from "./Gallery.js";
 import VideoPlayer from "./vedio.js";
 import Rooms from "./room.js";
+import Postt from "./Postt";
 import GooglePayButton from "./pay.js";
 import Canvas from "../Components/canvas";
 import PostList from "./axios.js";
@@ -73,6 +74,9 @@ const Home = (Props) =>{
       </div>
       <div>
         <Content />
+      </div>
+      <div>
+        <Postt/>
       </div>
       <div>
         <PostList/>

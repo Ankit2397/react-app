@@ -32,7 +32,6 @@ const Navbar= () =>{
       <li><button className="bg-[rgb(147,197,253)] py-2 px-3 rounded-[5px]" onClick={() => setSignIn(!signin)}>Sign In</button></li>
       <li><button className="bg-[rgb(147,197,253)] py-2 px-3 rounded-[5px]" onClick={() => setSignUp(!signup)}>Sign Up</button></li>
     </ul>
-
   </div>
   {!signin&& 
     <div><Signin/>

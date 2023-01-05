@@ -4,6 +4,8 @@ import NavBar from "../src/Components/Navbar.js"
 import Home from "../src/Pages/Home.js"
 import Contact from "../src/Pages/Contact.js"
 import About from "../src/Pages/About.js"
+import NewPost from "../src/Pages/NewPost"
+import Post from "../src/Pages/post"
 
 function App() {
   return (

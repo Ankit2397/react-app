@@ -24,8 +24,10 @@ export default class PostList extends React.Component {
         const posts = this.state.posts.filter(item => item.id !== id);  
         this.setState({ posts });  
       })  
+   
     
   }  
+  
     
   render() {  
     return (  

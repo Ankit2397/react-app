@@ -60,6 +60,14 @@ function Form(){
      </button>
      <button type="reset" className="bg-red-500 w-[120px] ml-2 py-2 px-3 text-white rounded-[5px]">Reset</button>
  </div>
+ <div>
+     {inputData.name }
+     <br></br>
+     {inputData.email}
+     <br></br>
+      {inputData.password}
+     <br></br>
+ </div>
         </form>
         </div>    
 

@@ -1,15 +1,15 @@
 import React from 'react';  
 import { useState} from "react";
 import { useEffect} from "react";
-// import axios from 'axios';  
+// import axios from 'axios';  // for 1st and second method
 import axios from './axios3.js'; 
 
-// const API ="https://jsonplaceholder.typicode.com"
+// const API ="https://jsonplaceholder.typicode.com" for 2nd method
 
 export default function Axioss  (props){
 
 const [myData , setMyData] = useState([]);
-// const [isError,setIsError] = usestate("");
+// const [isError,setIsError] = usestate(""); for 2nd method
 
 // ##First Method
 
