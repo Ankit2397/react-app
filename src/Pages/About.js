@@ -10,7 +10,7 @@ import React from 'react';
 import Parent from "./parent";
 import Nested from "./nested";
 import Put from "./put";
-
+import Toast from "./Toast.js";
 
 const About = (props) =>{
   const [loggedIn,setLoggedIn]=useState(false);
@@ -68,6 +68,9 @@ const About = (props) =>{
 </div>
 <div>
   <Nested/>
+</div>
+<div>
+  <Toast/>
 </div>
 <div>
   <Put/>

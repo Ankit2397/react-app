@@ -16,6 +16,7 @@ import PostList from "./axios.js";
 import LineChartss from "../Components/Linechart";
 import Piechatss from "../Components/Piechart.js";
 import styles from '../Button.module.css';
+import Bind from "./bind"
 
 const Home = (Props) =>{
   const [print, setPrint] = useState("");
@@ -67,7 +68,9 @@ const Home = (Props) =>{
       <div className="mt-4">
     <Canvas/>
   </div>
-     
+  <div>
+      <Bind/>
+    </div>
       <div className="mt-4">
        < Progessbar/>
      </div>
@@ -75,6 +78,7 @@ const Home = (Props) =>{
       <div>
         <Content />
       </div>
+      
       <div>
         <Postt/>
       </div>
