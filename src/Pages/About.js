@@ -9,6 +9,7 @@ import { Outlet } from "react-router-dom";
 import React from 'react';
 import Parent from "./parent";
 import Nested from "./nested";
+import XmlData from "./xmlapi";
 import Put from "./put";
 import Toast from "./Toast.js";
 
@@ -74,6 +75,9 @@ const About = (props) =>{
 </div>
 <div>
   <Put/>
+</div>
+<div>
+  <XmlData/>
 </div>
     </div>
   );

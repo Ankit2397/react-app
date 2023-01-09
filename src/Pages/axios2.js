@@ -42,6 +42,7 @@ const getApiData = async() =>{
     try{
         const res = await axios.get("/posts");
         setMyData(res.data)
+  ;
     }catch (error){
 //  setIsError(error.message);
     }
