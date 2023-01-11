@@ -11,7 +11,12 @@ const Signin = (Props) =>{
     },[]);
     function getFormData(event){
       console.warn(name,pswd)
-      // event.preventDefault();
+      // const Postdata =async (e) =>{
+      //   e.preventDefault();
+      //   const res=await
+      //   fetch("https://react-form-3e570-default-rtdb.firebaseio.com/react-form.json");
+      // }
+      
     }
     function  userHandler(e){
       let item=e.target.value;

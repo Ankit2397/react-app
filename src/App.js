@@ -4,6 +4,7 @@ import NavBar from "../src/Components/Navbar.js"
 import Home from "../src/Pages/Home.js"
 import Contact from "../src/Pages/Contact.js"
 import About from "../src/Pages/About.js"
+import Error from "../src/Pages/Error.js"
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
      <Route path="/" element={<Home num="2" />} />   
      <Route path="/contact" element={<Contact />} />  
      <Route path="/about" element={<About color="Black"/>} />  
+     <Route path="*" element={<Error/>} />  
  </Routes>
 </BrowserRouter>
 
