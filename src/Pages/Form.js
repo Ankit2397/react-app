@@ -62,8 +62,8 @@ alert("Plz fill Data")
           <div>
          <div className="w-full py-0 px-[15px] max-w-[1300px] my-0 mx-auto">  
       
-           <form method="Post" >        <div className="fixed top-[60%] max-w-[400px] border-2 border-black max-h-[520px] min-w-[200px] min-h-[200px] w-full h-full left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-[5px] p-4 py-4 z-10"> 
-    <span className="text-4xl fixed top-0 right-1 transform rotate-45 cursor-pointer">+</span><h2 className="text-2xl text-center mb-2">Sign In</h2>
+           <form method="Post" >        <div className="fixed right-[10%] top-[55%] max-w-[400px] border-2 border-black max-h-[520px] min-w-[200px] min-h-[200px] w-full h-full -right-[10%] -translate-x-1/2 -translate-y-1/2 bg-white rounded-[5px] p-4 py-4 z-10"> 
+    <span className="text-4xl fixed top-0 right-1 transform rotate-45 cursor-pointer">+</span><h2 className="text-2xl text-center mb-2">Log In</h2>
     <div className="flex flex-col gap-2"><label>Name</label>
    <input className="p-1 text-lg rounded-[5px] border-2 border-gray-300 focus:outline-[#FE4A2A]" name="name" type="text" value={user.name} onChange={getUserData} placeholder="Enter your Name"></input>
    </div>
@@ -78,7 +78,7 @@ alert("Plz fill Data")
    </div>
    <div className="flex flex-col gap-4">
    <a href="#" className="text-center  no-underline text-lg mt-1">Forget your Password?</a>
-   <button onClick={PostData()} className="bg-green-500 py-2 px-3 rounded-[5px] text-white">Sign In</button>
+   <button onClick={PostData()} className="bg-green-500 py-2 px-3 rounded-[5px] text-white">Log In</button>
    </div>
         </div>
         </form>

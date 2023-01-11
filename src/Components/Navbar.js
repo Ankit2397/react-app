@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { NavLink  } from "react-router-dom";
+import { NavLink ,useNavigate  } from "react-router-dom";
 import Signin from "./Signin.js"
 import SignUp from "./Signup.js"
 
 const Navbar= () =>{
   const [signin, setSignIn] = useState(true);
   const [signup, setSignUp] = useState(true);
+  const nav =useNavigate();
   return (
     <div className="bg-[rgb(32,35,42)] w-full">
     <div className="w-full py-0 px-[15px] max-w-[1300px] my-0 mx-auto">
   <div className="flex gap-5 justify-between py-[5px] items-center">
+ 
    <ul className="flex sm:hidden cursor-pointer flex-col gap-2 py-[5px]">
      <li className="bg-white w-[30px] h-[2px] "></li>
      <li className="bg-white w-[30px] h-[2px] "></li>
