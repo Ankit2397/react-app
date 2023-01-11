@@ -24,7 +24,7 @@ function ConnectionSpeed() {
         callbackFunctionOnNetworkTest={(data) => SetCheckSpeed(data)}
       />
       <div className="card-body mt-4">
-    <span className="display-1">{checkSpeed} MB/s</span>
+    <span className="text-4xl">{checkSpeed} MB/s</span>
       </div>
     </div>
   );
