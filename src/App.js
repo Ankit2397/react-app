@@ -4,8 +4,6 @@ import NavBar from "../src/Components/Navbar.js"
 import Home from "../src/Pages/Home.js"
 import Contact from "../src/Pages/Contact.js"
 import About from "../src/Pages/About.js"
-import NewPost from "../src/Pages/NewPost"
-import Post from "../src/Pages/post"
 
 function App() {
   return (
@@ -15,8 +13,6 @@ function App() {
      <Route path="/" element={<Home num="2" />} />   
      <Route path="/contact" element={<Contact />} />  
      <Route path="/about" element={<About color="Black"/>} />  
-        <Route path='new' element={<NewPost />} /> {/*A nested route!*/}
-        <Route path=':postId' element={<Post />} /> {/*A nested route!*/}
  </Routes>
 </BrowserRouter>
 
