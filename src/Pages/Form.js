@@ -18,7 +18,7 @@ const Formed = (Props) =>{
       const PostData =async (e) =>{
         e.preventDefault();
         const {name , email , phone , address } = user;
-
+  console.log("Post Data")
         if(name && email && phone && address ){
 
             const res=await
@@ -78,7 +78,7 @@ alert("Plz fill Data")
    </div>
    <div className="flex flex-col gap-4">
    <a href="#" className="text-center  no-underline text-lg mt-1">Forget your Password?</a>
-   <button onClick={PostData()} className="bg-green-500 py-2 px-3 rounded-[5px] text-white">Log In</button>
+   <button onClick={()=>PostData()} className="bg-green-500 py-2 px-3 rounded-[5px] text-white">Log In</button>
    </div>
         </div>
         </form>
