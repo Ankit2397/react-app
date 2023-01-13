@@ -8,7 +8,7 @@ const Contact = (Props) =>{
     <div>
      <h2 className="text-center my-2 mx-auto">Contact</h2>
      <UserForm />
-     {/* <ConfirmPassword/> */}
+     <ConfirmPassword/>
     <FileSizeValidate/>
     </div>
     )

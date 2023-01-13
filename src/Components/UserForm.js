@@ -19,7 +19,7 @@ export default function UserForm() {
   }, [user])
   function onSubmit(dataRes) {
     // console.log(dataRes)
-    localStorage.setItem('user4',JSON.stringify(dataRes))
+    localStorage.setItem('user',JSON.stringify(dataRes))
     const Data = localStorage.getItem('user');
     const NewData =JSON.parse(Data);
     console.log("form" ,NewData);

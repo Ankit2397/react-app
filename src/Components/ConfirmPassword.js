@@ -30,7 +30,7 @@ export default function ConfirmPassword() {
             {...register('password')}
             className={`form-control ${errors.password ? 'is-invalid' : ''}`}
           />
-          <div className="invalid-feedback">{errors.password.message}</div>
+          <div className="invalid-feedback">{errors.password}</div>
         </div>
         <div className="form-group">
           <label>Confirm Password</label>
@@ -40,10 +40,10 @@ export default function ConfirmPassword() {
             {...register('confirmPwd')}
             className={`form-control ${errors.confirmPwd ? 'is-invalid' : ''}`}
           />
-          <div className="invalid-feedback">{errors.confirmPwd.message}</div>
+          <div className="invalid-feedback">{errors.confirmPwd}</div>
         </div>
         <div className="mt-3">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary text-blue-900">
             Submit
           </button>
         </div>
