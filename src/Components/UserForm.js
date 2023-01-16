@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import { IMaskInput } from 'react-imask'
+const ContactNumberMask = '+{00}(00000)-00000'
+const EmailAddressMask = /^\S*@?\S*$/
+const Name = ""
 export default function UserForm() {
   const { register, handleSubmit, reset } = useForm()
   const [user, inituser] = useState(null)
@@ -44,32 +48,43 @@ export default function UserForm() {
         <form onSubmit={handleSubmit(onSubmit)} className="mt-3">
           <div className="form-group mb-3">
             <label>Name</label>
-            <input
+            <IMaskInput
               type="text"
               name="name"
               {...register('name')}
               className="form-control"
               required
+              mask={Name}
+              placeholder="Please Enter Your Full Name"
+              min={2}
+              max={20}
+            onAccept={(value, mask) => console.log(value, mask)}
             />
           </div>
           <div className="form-group mb-3">
             <label>Email</label>
-            <input
+            <IMaskInput
               type="email"
               name="email"
               {...register('email')}
               className="form-control"
+              mask={EmailAddressMask}
+              placeholder="Please Enter Email"
+              onAccept={(value, mask) => console.log(value, mask)}
               required
             />
           </div>
           <div className="form-group mb-3">
-            <label>mobile</label>
-            <input
+            <label>Mobile</label>
+            <IMaskInput
               type="text"
               name="mobile"
               {...register('mobile')}
               className="form-control"
               required
+              mask={ContactNumberMask}
+              placeholder="+91(695)416-6542"
+              onAccept={(value, mask) => console.log(value, mask)}
             />
           </div>
           <div className="d-grid">

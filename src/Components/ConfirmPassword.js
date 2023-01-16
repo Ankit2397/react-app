@@ -21,26 +21,26 @@ export default function ConfirmPassword() {
   return (
     <div className="container mt-5">
       <h2> Confirm Password Validation</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit="">
         <div className="form-group">
           <label>Password</label>
           <input
             name="password"
             type="password"
-            {...register('password')}
-            className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+   
+            className={`form-control `}
           />
-          <div className="invalid-feedback">{errors.password}</div>
+          <div className="invalid-feedback"></div>
         </div>
         <div className="form-group">
           <label>Confirm Password</label>
           <input
             name="confirmPwd"
             type="password"
-            {...register('confirmPwd')}
-            className={`form-control ${errors.confirmPwd ? 'is-invalid' : ''}`}
+         
+            className={`form-control`}
           />
-          <div className="invalid-feedback">{errors.confirmPwd}</div>
+          <div className="invalid-feedback"></div>
         </div>
         <div className="mt-3">
           <button type="submit" className="btn btn-primary text-blue-900">
