@@ -1,14 +1,34 @@
-import React from "react";
 import styled from "styled-components";
+import { NavLink } from 'react-router-dom'
 
-const Products = () => {
+
+const Products = (curElem) => {
+  const {id,name,image,price,category} =curElem;
   return (
-  <>
-  <Wrapper>
-  <h2>Products Page</h2>
-  </Wrapper>
-  </>
-  )
+    <Wrapper>
+    <NavLink to={`/singleproduct/${id}`}>
+<div className="w-full">
+  <figure className="w-full">
+    <img className="w-full" src={image} alt={name}/>
+    <figcaption className="caption">{category}</figcaption>
+  </figure>
+
+<div className="card-data">
+<div className="card-data-flex">
+  <h3>{name}</h3>
+<p className="card-data--price">{price}</p>
+</div>
+
+</div>
+
+
+
+
+  </div>
+
+    </NavLink>
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.section`
