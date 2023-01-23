@@ -9,7 +9,7 @@ function Header(props) {
   return (
     <MainHeader>
     <NavLink to="/">
-        <img className="w-[180px]" src="./images/shopmy.png" alt="Logo"></img>
+        <img className="w-[180px]" src="../images/shopmy.png" alt="Logo"></img>
     </NavLink>
     <Nav />
     </MainHeader>
