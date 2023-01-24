@@ -8,7 +8,7 @@ const MyImage = ({ imgs = [{ url: "" }] }) => {
       <div className="grid grid-four-column">
         {imgs.map((curElm, index) => {
           return (
-            <figure>
+            <figure className="h-full">
               <img
                 src={curElm.url}
                 alt={curElm.filename}
@@ -47,9 +47,8 @@ const Wrapper = styled.section`
 
     img {
       max-width: 100%;
-      max-height: 100%;
+      height: 100%;
       background-size: cover;
-      object-fit: contain;
       cursor: pointer;
       box-shadow: ${({ theme }) => theme.colors.shadow};
     }
