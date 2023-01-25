@@ -6,8 +6,7 @@ import styled from "styled-components";
 import {useFilterContext} from './Context/filter-context'
 
 const Product = () => {
-  const { filter_products }=useFilterContext();
-  console.log(filter_products)
+
 return (
   <Wrapper>
     <div className="container grid grid-filter-column">

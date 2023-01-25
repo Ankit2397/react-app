@@ -4,7 +4,7 @@ import React from "react";
 const FilterSection = () => {
   return (
   <div>
- <h4>Filter Section</h4>
+ {/* <h4>Filter Section</h4> */}
 
   </div>
   )
