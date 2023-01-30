@@ -1,28 +1,49 @@
+import { returnStatement } from "@babel/types";
 const filterReducer = (state, action) => {
+  switch (action.type) {
+    case "LOAD_FILTER_PRODUCTS":
+      let priceArr = action.payload.map((curElem) => curElem.price);
+      console.log(
 
-    switch (action.type) {
-        case "LOAD_FILTER_PRODUCTS":
-  return {
-    ...state,
-    filter_products: [...action.payload],
-    // all_products: [...action.payload],
-  };
-  case "SET_GRID_VIEW":
+        priceArr
+      );
+
+      // 1way
+      // console.log(Math.max.apply(null, priceArr));
+
+      // let maxPrice = priceArr.reduce(
+      //   (initialVal, curVal) => Math.max(initialVal, curVal),
+      //   0
+      // );
+      // console.log(
+      //   maxPrice
+      // );
+
+      let maxPrice = Math.max(...priceArr);
+      // console.log(
+      //   maxPrice
+      // );
+
+      return {
+        ...state,
+        filter_products: [...action.payload],
+        all_products: [...action.payload],
+        filters: { ...state.filters, maxPrice, price: maxPrice },
+      };
+
+    case "SET_GRID_VIEW":
       return {
         ...state,
         grid_view: true,
       };
 
     case "SET_LIST_VIEW":
-      let userSortValue =document.getElementById("sort");
-      let sort_value = userSortValue.options[userSortValue.selectedIndex].value;
-      console.log(sort_value)
-      console.log("sorting")
       return {
         ...state,
         grid_view: false,
       };
-      case "GET_SORT_VALUE":
+
+    case "GET_SORT_VALUE":
       // let userSortValue = document.getElementById("sort");
       // let sort_value = userSortValue.options[userSortValue.selectedIndex].value;
       return {
@@ -62,12 +83,79 @@ const filterReducer = (state, action) => {
         filter_products: newSortData,
       };
 
-            default:
-                return state;
-            }
+    case "UPDATE_FILTERS_VALUE":
+      const { name, value } = action.payload;
 
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          [name]: value,
+        },
+      };
 
+    case "FILTER_PRODUCTS":
+      let { all_products } = state;
+      let tempFilterProduct = [...all_products];
 
-}
+      const { text, category, company, color, price } = state.filters;
 
-    export default filterReducer;
+      if (text) {
+        tempFilterProduct = tempFilterProduct.filter((curElem) => {
+          return curElem.name.toLowerCase().includes(text);
+        });
+      }
+
+      if (category !== "all") {
+        tempFilterProduct = tempFilterProduct.filter(
+          (curElem) => curElem.category === category
+        );
+      }
+
+      if (company !== "all") {
+        tempFilterProduct = tempFilterProduct.filter(
+          (curElem) => curElem.company.toLowerCase() === company.toLowerCase()
+        );
+      }
+
+      if (color !== "all") {
+        tempFilterProduct = tempFilterProduct.filter((curElem) =>
+          curElem.colors.includes(color)
+        );
+      }
+
+      if (price === 0) {
+        tempFilterProduct = tempFilterProduct.filter(
+          (curElem) => curElem.price == price
+        );
+      } else {
+        tempFilterProduct = tempFilterProduct.filter(
+          (curElem) => curElem.price <= price
+        );
+      }
+      return {
+        ...state,
+        filter_products: tempFilterProduct,
+      };
+
+    case "CLEAR_FILTERS":
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          text: "",
+          category: "all",
+          company: "all",
+          color: "all",
+          maxPrice: 0,
+          price: state.filters.maxPrice,
+          minPrice: state.filters.maxPrice,
+        },
+      };
+
+    default:
+      return state;
+  }
+};
+
+export default filterReducer;

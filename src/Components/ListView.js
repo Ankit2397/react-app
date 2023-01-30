@@ -31,7 +31,6 @@ const ListView = ({ products }) => {
           );
         })}
       </div>
-      hjdjf
     </Wrapper>
   );
 };
