@@ -1,51 +1,20 @@
+import logo from './logo.svg';
 import './App.css';
-import Line2 from "./Line2";
-//  Line 1 ****
- import data from "./data.json";
-import {
-  LineChart,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Legend,
-} from "recharts";
-import { Line } from "recharts";
- 
+import axios from 'axios';
+import Form from "./Components/Form";
+import TodoList from "./Components/TodoList";
+import { useState } from 'react';
 
-export default function App() { 
-  return(     
-  <>               
-<Line1/>
-{/* <Line2/> */}
-</>
-  )
+function App() {
+ const [inputText , setInputText]=useState("")
+ const [todos , setTodos]=useState([])
+  return (
+    <div className="App">
+<h2>Todo List</h2>
+      <Form inputText={inputText} todos={todos} setTodos={setTodos} setInputText={setInputText}/>
+      <TodoList  setTodos={setTodos} todos={todos}/>
+    </div>
+  );
 }
 
-// Line 1 start 
-
- function Line1() { 
-  return(    
-    <div className="LineCharts">                
-<LineChart width={730} height={250} data={data}
-  margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-  <CartesianGrid strokeDasharray="3 3" />
-  <XAxis dataKey="name" />
-  <YAxis />
-  <Tooltip />
-  <Legend />
-  <Line type="monotone" dataKey="pv" stroke="#8884d8" />
-  <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-  <Line type="monotone" dataKey="jws" stroke="#09CBCB" />
-  <Line type="monotone" dataKey="amt" stroke="#FF9757" />
-</LineChart>
-</div>
-  )
-}
-
-
-
-
-
-
-
+export default App;

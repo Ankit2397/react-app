@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  width: 500px;
+  margin:  100px auto;
 }
 
 .App-logo {
@@ -36,11 +37,24 @@
     transform: rotate(360deg);
   }
 }
-.LineCharts {
-  max-width: 900px;
-  width: 100%;
-  padding: 10px;
-  margin: 20px auto;
-  background-color: white;
-  box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
+.Form-container{
+  display: flex;
+  gap: 2px;
+}
+.filter-todo{
+  padding: 5px 0;
+}
+.todo{
+  display: flex;
+  gap: 2px;
+  width: 300px;
+  justify-content: space-between;
+
+}
+.todo-item{
+  text-decoration: none;
+}
+.completed{
+  text-decoration: line-through;
+  opacity: 0.5;
 }
