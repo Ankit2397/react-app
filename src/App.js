@@ -1,15 +1,24 @@
-import React, { useState } from 'react'
-import data from './data'
-import List from './List'
+import React from 'react'
+import { useGlobalContext } from './context'
+
+// components
+import Navbar from './Navbar'
+import CartContainer from './CartContainer'
+// items
+
 function App() {
-  const [people, setPeople] = useState(data)
+  const { loading } = useGlobalContext()
+  if (loading) {
+    return (
+      <div className='loading'>
+        <h1>Loading...</h1>
+      </div>
+    )
+  }
   return (
     <main>
-      <section className='container'>
-        <h3>{people.length} Birthdays Today</h3>
-        <List people={people} />
-        <button onClick={() => setPeople([])}>clear all</button>
-      </section>
+      <Navbar />
+      <CartContainer />
     </main>
   )
 }
