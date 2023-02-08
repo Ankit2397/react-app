@@ -27,12 +27,35 @@
 .App-link {
   color: #61dafb;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.red-btn{
+ display: flex;
+ gap: 10px;
+}
+.red-btn button{
+  background-color: #61dafb;
+border: none;
+padding: 5px 15px;
+color: #fff;
+}
+.context-container{
+  margin-left: 10px;
+}
+.redux{
+  margin: 20px 0px 0px 20px;
+  display: flex;
+  align-items: center;
+}
+a{
+  cursor: pointer;
+}
+.redux-btn{
+  background-color:#00ffbf;
+  color: #fff;
+  padding: 3px 10px;
+  text-align: center;
+}
+.redux-input{
+  padding: 5px 10px;
+  outline: none;
+  border: 1px solid #00ffbf;
 }
