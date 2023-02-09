@@ -1,6 +1,14 @@
-import {createStore} from 'redux';
+// ** Using createstore
+
+// import {createStore} from 'redux';
+// const store = createStore(rootReducer ,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
 import rootReducer from "./Reducer/index";
 
-const store = createStore(rootReducer ,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+// ** Using toolkit in redux
 
-export default store;
+import { configureStore } from '@reduxjs/toolkit'
+const store = configureStore({
+  reducer: rootReducer,
+})
+export default store; 

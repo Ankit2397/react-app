@@ -7,7 +7,6 @@ const Redux =()=>{
  const dispatch=useDispatch();
     return(
         <>
-
         <div className="redux">
             <a title="decrement" className="redux-btn" onClick={() => dispatch(decNumber())}>
               <span>-</span> 

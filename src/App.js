@@ -7,7 +7,6 @@ import Redux from './redux.js'
 function App() {
   return (
   <>
-
     <Counter/>
    <Redux/>
 
