@@ -10,12 +10,8 @@ const AppProvider = ({children})=>{
   };
 return(
     <AppContext.Provider
-      value={{
-        openContext
-      }}>
-    </AppContext.Provider>
-)
-
+      value={{ openContext }}>
+    </AppContext.Provider>)
 }
 // make sure use
 export const useGlobalContext = () => {

@@ -7,18 +7,25 @@ const Redux =()=>{
  const dispatch=useDispatch();
     return(
         <>
+        <h2>Make a Counter in React React-Redux</h2>
         <div className="redux">
             <a title="decrement" className="redux-btn" onClick={() => dispatch(decNumber())}>
-              <span>-</span> 
+              <span>-</span>  
             </a>
             <input className="redux-input" type="text" value={myState}></input>
             <a className="redux-btn" onClick={() => dispatch(incNumber(5))}>
             <span>+</span>
             </a>
         </div>
-        </>
+       
+<div>
+    <p>
+        Redux Store Value <br/>
+        {myState}
+            </p>
+</div>
 
-
+</>
     )
 }
 export default Redux;
