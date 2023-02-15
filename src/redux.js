@@ -1,31 +1,30 @@
 import React from 'react'
-import {useSelector , useDispatch} from "react-redux";
-import {incNumber , decNumber} from "./Actions/index"
- 
-const Redux =()=>{
- const myState =useSelector((state) => state.changeTheNumber);
- const dispatch=useDispatch();
-    return(
-        <>
-        <h2>Make a Counter in React React-Redux</h2>
-        <div className="redux">
-            <a title="decrement" className="redux-btn" onClick={() => dispatch(decNumber())}>
-              <span>-</span>  
-            </a>
-            <input className="redux-input" type="text" value={myState}></input>
-            <a className="redux-btn" onClick={() => dispatch(incNumber(5))}>
-            <span>+</span>
-            </a>
-        </div>
-       
-<div>
-    <p>
-        Redux Store Value <br/>
-        {myState}
-            </p>
-</div>
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement, increment } from './Slice/index'
 
-</>
-    )
+export default function Redux() {
+  const count = useSelector((state) => state.counter.value)
+  const dispatch = useDispatch()
+
+  return(
+    <div>
+      <div className="redux-contain">
+        <button
+          aria-label="Increment value"
+          onClick={() => dispatch(increment())}
+          className="redux-btn"
+        >
+          Increment
+        </button>
+        <span className="redux-input">{count}</span>
+        <button
+          aria-label="Decrement value"
+          onClick={() => dispatch(decrement())}
+          className="redux-btn"
+        >
+          Decrement
+        </button>
+      </div>
+    </div>
+  )
 }
-export default Redux;

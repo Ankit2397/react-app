@@ -1,16 +1,8 @@
 import './App.css';
-import Counter from './reducer.js';
-import Redux from './redux.js'
+import Redux from './redux'
 
-
-function App() {
+export default  function App() {
   return (
-  <>
-    {/* <Counter/> */}
-   <Redux/>
-
-   </>
+  <> <Redux/> </>
   );
 }
-
-export default App;
