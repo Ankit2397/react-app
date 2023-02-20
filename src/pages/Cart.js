@@ -9,8 +9,8 @@ const Cart = () => {
     const handleRemove = (productId) => {
         dispatch(remove(productId));
     };
-    return (
-        <div>
+    return(
+        <div> 
             <h3>Cart</h3>
             <div className="cartWrapper">
                 {products.map((product) => (
@@ -22,12 +22,8 @@ const Cart = () => {
                             className="btn"
                             onClick={() => handleRemove(product.id)}>
                             Remove
-                        </button>
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
+                        </button></div>
+                ))}</div>
+        </div> );
 };
-
 export default Cart;

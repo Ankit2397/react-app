@@ -23,3 +23,32 @@ function App() {
 }
 
 export default App;
+
+
+
+
+store.subscribe(() => {
+    console.log("current state", store.getState());
+  });
+  
+  store.dispatch({
+    type: "INCREMENT",
+    payload: 1
+  });
+  
+  store.dispatch({
+    type: "INCREMENT",
+    payload: 5
+  });
+  
+  store.dispatch({
+    type: "DECREMENT",
+    payload: 2
+  });
+
+
+
+
+
+
+
