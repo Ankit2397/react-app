@@ -1,35 +1,45 @@
-import React from 'react';
-// import ReactDOM from 'react-dom';
-import * as ReactDOMClient from 'react-dom/client';
-import './index.css';
+import React, { StrictMode } from "react";
+import { render } from 'react-dom';
+import { createStore } from "redux";
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import  { StrictMode } from "react";
-import { Middleware } from 'webpack-dev-server';
+import { createRoot } from 'react-dom/client';
 
+const reducer = (state = 0, action) => {
+  switch (action.type) {
+    case "INCREMENT":
+      return state + action.payload;
+    case "DECREMENT":
+      return state - action.payload;
+    default:
+      return state;
+  }
+};
 
+const store = createStore(reducer);
 
-  
+store.subscribe(() => {
+  console.log("current state", store.getState());
+});
 
-const container = document.getElementById('root');
-const root = ReactDOMClient.createRoot(container);
-root.render ( <App />);
+store.dispatch({
+  type: "INCREMENT",
+  payload: 1
+});
 
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
+store.dispatch({
+  type: "INCREMENT",
+  payload: 5
+});
 
+store.dispatch({
+  type: "DECREMENT",
+  payload: 2
+});
 
-// Types of Middleware are
-
-// database middleware, 
-// application server middleware, 
-// message-oriented middleware, 
-// web middleware,
-//  and transaction-processing monitors.
-
-
-reportWebVitals();
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+root.render(
+  <StrictMode>
+  <App/>
+  </StrictMode>,
+);

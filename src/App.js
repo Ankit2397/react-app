@@ -1,54 +1,21 @@
-import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from './store/store';
-import Home from './pages/Home';
-import Cart from './pages/Cart';
-import Navbar from './components/Navbar';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import About from "./About";
+import Home from "./Home";
 
-function App() {
-    return (
-        <div className="App">
-            <Provider store={store}>
-                <BrowserRouter>
-                    <Navbar />
-                    <Routes>
-                        <Route path="/" element={<Home />}></Route>
-                        <Route path="/cart" element={<Cart />}></Route>
-                    </Routes>
-                </BrowserRouter>
-            </Provider>
-        </div>
-    );
-}
+const App = () => {
+  return (
+    <div className="app">
+      <h1>App page </h1>
+      {/* <NavLink to="/">Home</NavLink>
+      <NavLink to="/about">About</NavLink>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/about" element={<About />}></Route>
+      </Routes> */}
+    </div>
+  );
+};
 
 export default App;
-
-
-
-
-store.subscribe(() => {
-    console.log("current state", store.getState());
-  });
-  
-  store.dispatch({
-    type: "INCREMENT",
-    payload: 1
-  });
-  
-  store.dispatch({
-    type: "INCREMENT",
-    payload: 5
-  });
-  
-  store.dispatch({
-    type: "DECREMENT",
-    payload: 2
-  });
-
-
-
-
-
-
-
