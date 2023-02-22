@@ -1,21 +1,28 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { Route, Routes } from "react-router-dom";
-import About from "./About";
-import Home from "./Home";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./components/Home/Home";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import PageNotFound from "./components/PageNotFound/PageNotFound";
+import MovieDetail from "./components/MovieDetail/MovieDetail";
+import "./App.scss";
 
-const App = () => {
+function App() {
   return (
     <div className="app">
-      <h1>App page </h1>
-      {/* <NavLink to="/">Home</NavLink>
-      <NavLink to="/about">About</NavLink>
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/about" element={<About />}></Route>
-      </Routes> */}
+      <Router>
+        <Header></Header>
+        <div className="container">
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/movie/:imdbID" component={MovieDetail} />
+            <Route component={PageNotFound} />
+          </Switch>
+        </div>
+        <Footer />
+      </Router>
     </div>
   );
-};
+}
 
 export default App;
