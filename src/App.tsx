@@ -1,48 +1,56 @@
-import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/react';
+import React from 'react';
+import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { Redirect, Route } from 'react-router-dom';
-import Menu from './components/Menu';
-import Page from './pages/Page';
 
-/* Core CSS required for Ionic components to work properly */
-import '@ionic/react/css/core.css';
+import { Route, Redirect } from 'react-router';
 
-/* Basic CSS for apps built with Ionic */
-import '@ionic/react/css/normalize.css';
-import '@ionic/react/css/structure.css';
-import '@ionic/react/css/typography.css';
+import { playCircle, radio, library, search } from 'ionicons/icons';
 
-/* Optional CSS utils that can be commented out */
-import '@ionic/react/css/padding.css';
-import '@ionic/react/css/float-elements.css';
-import '@ionic/react/css/text-alignment.css';
-import '@ionic/react/css/text-transformation.css';
-import '@ionic/react/css/flex-utils.css';
-import '@ionic/react/css/display.css';
+import HomePage from './pages/Home';
+import RadioPage from './pages/Radio';
+import LibraryPage from './pages/Library';
+import SearchPage from './pages/Search';
 
-/* Theme variables */
-import './theme/variables.css';
-
-setupIonicReact();
-
-const App: React.FC = () => {
+function App() {
   return (
-    <IonApp>
-      <IonReactRouter>
-        <IonSplitPane contentId="main">
-          <Menu />
-          <IonRouterOutlet id="main">
-            <Route path="/" exact={true}>
-              <Redirect to="/page/Inbox" />
-            </Route>
-            <Route path="/page/:name" exact={true}>
-              <Page />
-            </Route>
-          </IonRouterOutlet>
-        </IonSplitPane>
-      </IonReactRouter>
-    </IonApp>
-  );
-};
+    <IonReactRouter>
+      <IonTabs>
+        <IonRouterOutlet>
+          <Redirect exact path="/" to="/home" />
+          {/*
+          Use the render method to reduce the number of renders your component will have due to a route change.
 
+          Use the component prop when your component depends on the RouterComponentProps passed in automatically.
+        */}
+          <Route path="/home" render={() => <HomePage />} exact={true} />
+          <Route path="/radio" render={() => <RadioPage />} exact={true} />
+          <Route path="/library" render={() => <LibraryPage />} exact={true} />
+          <Route path="/search" render={() => <SearchPage />} exact={true} />
+        </IonRouterOutlet>
+
+        <IonTabBar slot="bottom">
+          <IonTabButton tab="home" href="/home">
+            <IonIcon icon={playCircle} />
+            <IonLabel>Listen now</IonLabel>
+          </IonTabButton>
+
+          <IonTabButton tab="radio" href="/radio">
+            <IonIcon icon={radio} />
+            <IonLabel>Radio</IonLabel>
+          </IonTabButton>
+
+          <IonTabButton tab="library" href="/library">
+            <IonIcon icon={library} />
+            <IonLabel>Library</IonLabel>
+          </IonTabButton>
+
+          <IonTabButton tab="search" href="/search">
+            <IonIcon icon={search} />
+            <IonLabel>Search</IonLabel>
+          </IonTabButton>
+        </IonTabBar>
+      </IonTabs>
+    </IonReactRouter>
+  );
+}
 export default App;
