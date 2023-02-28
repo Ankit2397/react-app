@@ -1,0 +1,26 @@
+*{
+text-decoration: none;
+list-style: none;
+}
+
+.bottom-navbar{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+ion-tab-bar.undefined.bottom-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2px;
+}
+ion-label.sc-ion-label-h.sc-ion-label-s.undefined {
+    text-decoration: none;
+    list-style: none;
+    color: black;
+}
+ion-icon.md.hydrated {
+    color: black;
+}
+

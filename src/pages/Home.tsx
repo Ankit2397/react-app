@@ -1,26 +1,31 @@
 import React from 'react';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonTitle,IonLabel, IonInput , IonCheckbox , IonButton , IonItem } from '@ionic/react';
 import Alert from '../components/Alert';
 
 const HomePage = () => (
   <>
     <IonHeader>
-      <IonToolbar>
-        <IonTitle>Listen now</IonTitle>
-      </IonToolbar>
+      <IonTitle>HOME</IonTitle>
     </IonHeader>
     <IonContent>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          height: '100%',
-        }}
-      >
-        Listen now content
-      </div>
-      <Alert/>
+      <form className="ion-padding">
+      <IonItem>
+        <IonLabel position="floating">Username</IonLabel>
+        <IonInput />
+      </IonItem>
+      <IonItem>
+        <IonLabel position="floating">Password</IonLabel>
+        <IonInput type="password" />
+      </IonItem>
+      <IonItem lines="none">
+        <IonLabel>Remember me</IonLabel>
+        <IonCheckbox defaultChecked={true} slot="start" />
+      </IonItem>
+      <IonButton className="ion-margin-top" type="submit" expand="block">
+        Login
+      </IonButton>
+    </form>
+      {/* <Alert/> */}
     </IonContent>
   </>
 );

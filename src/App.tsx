@@ -1,15 +1,13 @@
 import React from 'react';
 import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-
 import { Route, Redirect } from 'react-router';
-
 import { playCircle, radio, library, search } from 'ionicons/icons';
-
 import HomePage from './pages/Home';
 import RadioPage from './pages/Radio';
 import LibraryPage from './pages/Library';
 import SearchPage from './pages/Search';
+import './App.css';
 
 function App() {
   return (
@@ -28,10 +26,10 @@ function App() {
           <Route path="/search" render={() => <SearchPage />} exact={true} />
         </IonRouterOutlet>
 
-        <IonTabBar slot="bottom">
+        <IonTabBar className="bottom-navbar" slot="bottom">
           <IonTabButton tab="home" href="/home">
             <IonIcon icon={playCircle} />
-            <IonLabel>Listen now</IonLabel>
+            <IonLabel>Home</IonLabel>
           </IonTabButton>
 
           <IonTabButton tab="radio" href="/radio">
@@ -53,4 +51,5 @@ function App() {
     </IonReactRouter>
   );
 }
+
 export default App;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonTitle, IonToolbar , IonItem, IonList, IonSelect, IonSelectOption , IonRange } from '@ionic/react';
 
 const LibraryPage = () => (
   <>
@@ -9,16 +9,16 @@ const LibraryPage = () => (
       </IonToolbar>
     </IonHeader>
     <IonContent>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          height: '100%',
-        }}
-      >
-        Library content
-      </div>
+    <IonList>
+      <IonItem>
+        <IonSelect placeholder="Select fruit">
+          <IonSelectOption value="apples">Apples</IonSelectOption>
+          <IonSelectOption value="oranges">Oranges</IonSelectOption>
+          <IonSelectOption value="bananas">Bananas</IonSelectOption>
+        </IonSelect>
+      </IonItem>
+    </IonList>
+    <IonRange pin={true} pinFormatter={(value: number) => `${value}%`}></IonRange>
     </IonContent>
   </>
 );
