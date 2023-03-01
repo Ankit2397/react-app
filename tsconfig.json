@@ -1,5 +1,4 @@
 {
-  "compileOnSave": true,
   "compilerOptions": {
     "target": "es5",
     "lib": [
@@ -19,11 +18,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "sourceMap": true,
-    "noImplicitAny": true,
-    "jsx": "react"
+    "jsx": "react-jsx"
   },
   "include": [
     "src"
-  ],
+  ]
 }
