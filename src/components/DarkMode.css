@@ -1,0 +1,10 @@
+.wrapper{
+    max-width: 750px;
+    padding: 0 15px;
+    margin: 0 autos;
+   width: 100%;
+  }
+  body.dark {
+    background-color: black;
+  
+  }

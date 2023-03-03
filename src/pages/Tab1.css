@@ -1,0 +1,9 @@
+@import '../theme/variables.css';
+
+ion-content ion-toolbar {
+  --background: translucent;
+}
+.Toolbar{
+ --background-color: gray;
+
+}
