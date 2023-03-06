@@ -9,14 +9,10 @@ const Tab1: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar className="Toolbar">
-       
-          <IonTitle className="Toolbar-title ion-text-center  ion-text-uppercase">Home </IonTitle>
-       
+        <IonTitle className="Toolbar-title ion-text-center  ion-text-uppercase">Home </IonTitle>
         </IonToolbar>
-    
       </IonHeader>
       <IonContent>
-    
         <ExploreContainer name="Home" />
         <DarkMode/>
       </IonContent>

@@ -1,59 +1,42 @@
-import React, { useState } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonFab,IonFabButton, IonIcon, IonGrid, IonRow, IonCol, IonImg, IonActionSheet } from '@ionic/react';
-import { camera, trash, close } from 'ionicons/icons';
-import { usePhotoGallery, UserPhoto } from '../hooks/usePhotoGallery';
+import {
+  IonContent,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+  useIonViewDidEnter,
+  useIonViewDidLeave,
+  useIonViewWillEnter,
+  useIonViewWillLeave,
+} from '@ionic/react';
+import React from 'react';
 
 const Tab2: React.FC = () => {
-  const { deletePhoto, photos, takePhoto } = usePhotoGallery();
-  const [photoToDelete, setPhotoToDelete] = useState<UserPhoto>();
+  useIonViewDidEnter(() => {
+    console.log('ionViewDidEnter event fired');
+  });
 
+  useIonViewDidLeave(() => {
+    console.log('ionViewDidLeave event fired');
+  });
+
+  useIonViewWillEnter(() => {
+    console.log('ionViewWillEnter event fired');
+  });
+
+  useIonViewWillLeave(() => {
+    console.log('ionViewWillLeave event fired');
+  });
   return (
-    <IonPage>
+<>
       <IonHeader>
         <IonToolbar>
-          <IonTitle className="ion-text-center  ion-text-uppercase">Photo Gallery</IonTitle>
+          <IonTitle>Tab2</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonGrid>
-          <IonRow>
-            {photos.map((photo, index) => (
-              <IonCol size="6" key={index}>
-                <IonImg onClick={() => setPhotoToDelete(photo)} src={photo.webviewPath} />
-              </IonCol>
-            ))}
-          </IonRow>
-        </IonGrid>
-
-        <IonFab vertical="center" horizontal="center" slot="fixed">
-          <IonFabButton onClick={() => takePhoto()}>
-            <IonIcon className="Camera"  icon={camera}></IonIcon>
-          </IonFabButton>
-        </IonFab>
-
-        <IonActionSheet
-          isOpen={!!photoToDelete}
-          buttons={[{
-            text: 'Delete',
-            role: 'destructive',
-            icon: trash,
-            handler: () => {
-              if (photoToDelete) {
-                deletePhoto(photoToDelete);
-                setPhotoToDelete(undefined);
-              }
-            }
-          }, {
-            text: 'Cancel',
-            icon: close,
-            role: 'cancel'
-          }]}
-          onDidDismiss={() => setPhotoToDelete(undefined)}
-        />
-
-
+        <h2>Tab Three</h2>
       </IonContent>
-    </IonPage>
+</>
   );
 };
 
