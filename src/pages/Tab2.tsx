@@ -1,43 +1,61 @@
-import {
-  IonContent,
-  IonHeader,
-  IonTitle,
-  IonToolbar,
-  useIonViewDidEnter,
-  useIonViewDidLeave,
-  useIonViewWillEnter,
-  useIonViewWillLeave,
-} from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar ,IonButton ,IonIcon,IonButtons,IonInput, IonItem, IonLabel, IonList } from '@ionic/react';
+import ExploreContainer from '../components/ExploreContainer';
+import './Tab2.css';
+import { personCircle , search} from 'ionicons/icons';
 import React from 'react';
 
 const Tab2: React.FC = () => {
-  useIonViewDidEnter(() => {
-    console.log('ionViewDidEnter event fired');
-  });
-
-  useIonViewDidLeave(() => {
-    console.log('ionViewDidLeave event fired');
-  });
-
-  useIonViewWillEnter(() => {
-    console.log('ionViewWillEnter event fired');
-  });
-
-  useIonViewWillLeave(() => {
-    console.log('ionViewWillLeave event fired');
-  });
   return (
-<>
-      <IonHeader>
+    <IonPage>
+     <IonHeader>
         <IonToolbar>
-          <IonTitle>Tab2</IonTitle>
+        <IonButtons slot="start">
+          <IonButton>
+            <IonIcon slot="icon-only" icon={search}></IonIcon>
+          </IonButton> </IonButtons>
+          <IonTitle class="ion-text-center">Headlines</IonTitle>
+          <IonButtons slot="end">
+          <IonButton>
+            <IonIcon slot="icon-only"  icon={personCircle}></IonIcon>
+          </IonButton>
+          </IonButtons>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-        <h2>Tab Three</h2>
+      <IonContent fullscreen>
+      <IonHeader>
+      <IonTitle class="ion-text-center ion-padding-vertical">Contact Form</IonTitle>
+        </IonHeader>
+      <IonList>
+      <IonItem>
+        <IonLabel>Text</IonLabel>
+        <IonInput placeholder="Enter text"></IonInput>
+      </IonItem>
+
+      <IonItem>
+        <IonLabel>Number</IonLabel>
+        <IonInput type="number" placeholder="000"></IonInput>
+      </IonItem>
+
+      <IonItem>
+        <IonLabel>Password</IonLabel>
+        <IonInput type="password" value="password"></IonInput>
+      </IonItem>
+
+      <IonItem>
+        <IonLabel>Email</IonLabel>
+        <IonInput type="email" placeholder="email@domain.com"></IonInput>
+      </IonItem>
+
+      <IonItem>
+        <IonLabel>Telephone</IonLabel>
+        <IonInput type="tel" placeholder="888-888-8888"></IonInput>
+      </IonItem>
+    </IonList>
       </IonContent>
-</>
+    </IonPage>
   );
 };
 
 export default Tab2;
+
+

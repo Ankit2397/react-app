@@ -1,7 +1,5 @@
 {
-  "name": "photo-gallery-capacitor-react",
-  "integrations": {
-    "capacitor": {}
-  },
+  "name": "myapp",
+  "integrations": {},
   "type": "react"
 }

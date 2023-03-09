@@ -1,9 +1,34 @@
-@import '../theme/variables.css';
-
-ion-content ion-toolbar {
-  --background: translucent;
+*{
+    text-decoration: none;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+   list-style: none;
 }
-.Toolbar{
- --background-color: gray;
-
+.wrapper{
+    padding: 0 15px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 750px;
 }
+.links-details{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.links-item a{
+ color: black;
+}
+.links-item a:hover{
+    color: rgb(56,128,255);
+    border-bottom: 2px solid rgb(56,128,255);
+    padding-bottom: 5px;
+}
+/* iOS places the subtitle above the title */
+ion-card-header.ios {
+    display: flex;
+    flex-flow: column-reverse;
+  }
+  ion-card{
+  margin-top: 50px;
+  }
