@@ -35,23 +35,22 @@ const Tab3: React.FC = () => {
             <IonIcon slot="icon-only"  icon={personCircle}></IonIcon>
           </IonButton>
           </IonButtons>
-         
-        
         </IonToolbar>
       </IonHeader>
+
       <IonContent>
       <IonList>
         {items.map((item, index) => (
           <IonItem key={item}>
             <IonAvatar slot="start">
-              <img src={'https://picsum.photos/80/80?random=' + index} alt="avatar" />
+              <img src={'https://picsum.photos/80/80?random=' +  index} alt="avatar" />
             </IonAvatar>
-            <IonLabel>{item}</IonLabel>
+            <IonLabel className="ion-margin-start">{item}</IonLabel>
           </IonItem>
         ))}
       </IonList>
       <IonInfiniteScroll>
-        <IonInfiniteScrollContent loadingText="Please wait..." loadingSpinner="bubbles"></IonInfiniteScrollContent>
+        <IonInfiniteScrollContent loadingText="Please wait...." loadingSpinner="bubbles"></IonInfiniteScrollContent>
       </IonInfiniteScroll>
     </IonContent>
     </IonPage>

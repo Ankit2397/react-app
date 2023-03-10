@@ -20,7 +20,8 @@ function getEvents() {
         .then((data) => {
             setEventDetails(data)
             console.log(data)
-
+            const FinalData = JSON.parse(data)
+         
         });
 }
 useEffect(()=>{
@@ -42,14 +43,12 @@ console.log(eventDetails)
             <IonIcon slot="icon-only"  icon={personCircle}></IonIcon>
           </IonButton>
           </IonButtons>
-         
-        
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
       <div className="wrapper">
-  <div className="links-container">
-   <ul className="links-details">
+        <div className="links-container">
+     <ul className="links-details">
      <li className="links-item"><a>BBC News</a></li>
      <li className="links-item"><a>CNN</a></li>
      <li className="links-item"><a>EONLINE</a></li>
@@ -66,7 +65,7 @@ console.log(eventDetails)
       </IonCardHeader>
 
       <IonCardContent>
-        Here's a small text description for the card content. Nothing more, nothing less.
+        Here's a small text description for the card content. Nothing more, nothing less..
       </IonCardContent>
     </IonCard>
 
