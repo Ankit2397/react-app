@@ -13,7 +13,7 @@ const Tab2: React.FC = () => {
           <IonButton>
             <IonIcon slot="icon-only" icon={search}></IonIcon>
           </IonButton> </IonButtons>
-          <IonTitle class="ion-text-center">Headlines</IonTitle>
+          <IonTitle class="ion-text-center">Headliness</IonTitle>
           <IonButtons slot="end">
           <IonButton>
             <IonIcon slot="icon-only"  icon={personCircle}></IonIcon>
@@ -51,11 +51,27 @@ const Tab2: React.FC = () => {
         <IonInput type="tel" placeholder="888-888-8888"></IonInput>
       </IonItem>
     </IonList>
+
+    
       </IonContent>
     </IonPage>
   );
 };
 
 export default Tab2;
+
+// class MyClass {
+//   constructor(public storage: Storage) {}
+
+//   async setData(key, value) {
+//     const res = await this.storage.set(key, value);
+//     console.log(res);
+//   }
+
+//   async getData(key) {
+//     const keyVal = await this.storage.get(key);
+//     console.log('Key is', keyVal);
+//   }
+// }
 
 

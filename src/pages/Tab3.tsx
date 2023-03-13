@@ -29,7 +29,7 @@ const Tab3: React.FC = () => {
           <IonButton>
             <IonIcon slot="icon-only" icon={search}></IonIcon>
           </IonButton> </IonButtons>
-          <IonTitle class="ion-text-center">Following</IonTitle>
+          <IonTitle class="ion-text-center">Followingg</IonTitle>
           <IonButtons slot="end">
           <IonButton>
             <IonIcon slot="icon-only"  icon={personCircle}></IonIcon>
